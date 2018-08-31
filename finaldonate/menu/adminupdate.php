@@ -25,24 +25,24 @@ die("connection failed:".mysqli_connect_error());
 <style>
 	html{overflow-x:hidden;}
 	</style>
-<link href="/donateblood/css/templatemo_style.css" rel="stylesheet" type="text/css" />
+<link href="/finaldonate/css/templatemo_style.css" rel="stylesheet" type="text/css" />
 <!-- templatemo 358 carousel -->
 <!-- 
 Carousel Template 
 http://www.templatemo.com/preview/templatemo_358_carousel 
 -->
-<script type="text/javascript" src="/donateblood/js/jquery-1-4-2.min.js"></script> 
+<script type="text/javascript" src="/finaldonate/js/jquery-1-4-2.min.js"></script> 
 <!--script type="text/javascript" src="/jqueryui/js/jquery-ui-1.7.2.custom.min.js"></script--> 
-<script type="text/javascript" src="/donateblood/js/jquery-ui.min.js"></script> 
-<script type="text/javascript" src="/donateblood/js/showhide.js"></script> 
-<link rel="stylesheet" href="/donateblood/css/slimbox2.css" type="text/css" media="screen" /> 
-<script type="text/JavaScript" src="/donateblood/js/jquery.mousewheel.js"></script> 
-<script type="text/JavaScript" src="/donateblood/js/slimbox2.js"></script> 
+<script type="text/javascript" src="/finaldonate/js/jquery-ui.min.js"></script> 
+<script type="text/javascript" src="/finaldonate/js/showhide.js"></script> 
+<link rel="stylesheet" href="/finaldonate/css/slimbox2.css" type="text/css" media="screen" /> 
+<script type="text/JavaScript" src="/finaldonate/js/jquery.mousewheel.js"></script> 
+<script type="text/JavaScript" src="/finaldonate/js/slimbox2.js"></script> 
 
-<link rel="stylesheet" type="text/css" href="/donateblood/css/ddsmoothmenu.css" />
+<link rel="stylesheet" type="text/css" href="/finaldonate/css/ddsmoothmenu.css" />
 
-<script type="text/javascript" src="/donateblood/js/jquery.min.js"></script>
-<script type="text/javascript" src="/donateblood/js/ddsmoothmenu.js">
+<script type="text/javascript" src="/finaldonate/js/jquery.min.js"></script>
+<script type="text/javascript" src="/finaldonate/js/ddsmoothmenu.js">
 
 /***********************************************
 * Smooth Navigational Menu- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
@@ -80,18 +80,14 @@ ddsmoothmenu.init({
 
 <div id="templatemo_header_wrapper">
   <div id="site_title">
-	<a href="/donateblood/index.html?lang=en&amp;style=style-default"
-							class="appbrand pull-left"><img src="/donateblood/images/blood2.jpg" width="200" height="100"></a>
+	<a href="/finaldonatefinaldonate/index.html?lang=en&amp;style=style-default"
+							class="appbrand pull-left"><img src="/finaldonate/images/blood2.jpg" width="200" height="100"></a>
   </div>
       <div id="templatemo_menu" class="ddsmoothmenu">
-        <ul>
-            <li><a href="/donateblood/index.html">Home</a></li>
-            <li><a href="/donateblood/about.html" >About</a></li>
-			<li><a href="/donateblood/services.html">Services</a></li>
-            <li><a href="/donateblood/blog.html" >Blog</a></li>
-            <li><a href="/donateblood/contact.html" >Contact Us</a></li>
-			<li><a href="/donateblood/index.html">Log Out</a>
-          </li>
+         <ul>
+      <li><a href="/finaldonate/menu/adminlogin.php" class="selected">Logout</a>
+                     </li>
+
         </ul>
         <br style="clear: left" />
     </div> <!-- end of templatemo_menu -->
@@ -101,22 +97,22 @@ ddsmoothmenu.init({
 <div id="templatemo_main">
  
   <br/></p>
-<div id="inputs" style="width:750px; height:400px; margin-left:100px; border:3px solid #a1a1a1">
+<div id="inputs" style="width:750px; height:340px; margin-left:100px; border:3px solid #a1a1a1">
 
 <table width="750px" height:400px; border="1" align="center" >
   <tr>
     <th width="1" colspan="2" rowspan="7" scope="col">
-	<form id="form1" name="form1" method="post" action="/donateblood/menu/adminlogincon.php">
+	<form id="form1" name="form1" method="post" action="/finaldonate/menu/adminlogincon.php">
 
 <span class="style4">Personal Details</span><br/>
 ID number:<br/>      
-  <input name="ID" type="text" maxlength="8" id="ID" >
+  <input name="idNumber" type="text" maxlength="8" id="idNumber" >
   <br/>
 First name:<br/>    
-<input name="firstname" type="text" maxlength="20" id="firstname" >
+<input name="firstName" type="text" maxlength="20" id="firstname" >
 <br/>
 Last name:<br/> 
-<input name="lastname" type="text" maxlength="20" id="lastname" >
+<input name="lastName" type="text" maxlength="20" id="lastname" >
 <br/>
 Email address:<br/>
 <input name="email" type="text" maxlength="50" id="email" >
@@ -124,12 +120,10 @@ Email address:<br/>
 Mobile:<br/>  
 <input name="mobile" type="text" maxlength="10" id="mobile" >
 <br/>
-Employee ID:<br/>  
-<input name="empID" type="text" maxlength="10" id="empID" >
-<br/>
 Password:<br/>  
 <input name="password" type="password"  id="password" >
 <br/>
+<p></p><br/>
 
 <br/>
 
@@ -139,24 +133,24 @@ Password:<br/>
     <th colspan="2" bgcolor="#FFFFFF" scope="col"><span class="style9">Menu</span></th>
   </tr>
   <tr>
-    <td width="150" bgcolor="#CC3366"><input  style="width:150px" name="update2" type="submit" id="update2" value="Update personal Details" onclick="location.href='/donateblood/menu/adminupdate.php'"/>    </td>
-    <td width="169" bgcolor="#CC3366"><input style="width:150px"  name="hospitals" type="submit" id="hospitals" value="Hospitals" onclick="location.href='/donateblood/hospitals/hospitals.php'"/></td>
+    <td width="150" bgcolor="#CC3366"><input  style="width:150px" name="update2" type="submit" id="update2" value="Update personal Details" onclick="location.href='/finaldonate/menu/adminupdate.php'"/>    </td>
+    <td width="169" bgcolor="#CC3366"><input style="width:150px"  name="hospitals" type="submit" id="hospitals" value="Hospitals" onclick="location.href='/finaldonate/hospitals/hospitals.php'"/></td>
   </tr>
   <tr>
-    <td bgcolor="#CC3366"><input  style="width:150px" name="password" type="submit" id="password" value="Change Password" onclick="location.href='/donateblood/password/adminpassword.php'"/></td>
-    <td bgcolor="#CC3366"><input style="width:150px" name="types" type="submit" id="types" value="Blood Counts" onclick="location.href='/donateblood/blood/bloodtypes.php'"/></td>
+    <td bgcolor="#CC3366"><input  style="width:150px" name="password" type="submit" id="password" value="Change Password" onclick="location.href='/finaldonate/password/adminpassword.php'"/></td>
+    <td bgcolor="#CC3366"><input style="width:150px" name="types" type="submit" id="types" value="Blood Counts" onclick="location.href='/finaldonate/blood/bloodtypes.php'"/></td>
   </tr>
   <tr>
-    <td bgcolor="#CC3366"><input style="width:150px" name="processed" type="submit" id="processed" value="Processed Blood" onclick="location.href='/donateblood/blood/processedblood.php'"/></td>
-    <td bgcolor="#CC3366"><input style="width:150px" name="donated" type="submit" id="donated" value="Donated Blood" onclick="location.href='/donateblood/blood/donatedblood.php'"/></td>
+    <td bgcolor="#CC3366"><input style="width:150px" name="processed" type="submit" id="processed" value="Processed Blood" onclick="location.href='/finaldonate/blood/processedblood.php'"/></td>
+    <td bgcolor="#CC3366"><input style="width:150px" name="donated" type="submit" id="donated" value="Donated Blood" onclick="location.href='/finaldonate/blood/donatedblood.php'"/></td>
   </tr>
   <tr>
-    <td bgcolor="#CC3366"><input style="width:150px" name="recipientsapp" type="submit" id="recipientsapp" value="Recipients Appointments" onclick="location.href='/donateblood/appointments/adminrecipients.php'"/></td>
-    <td bgcolor="#CC3366"><input style="width:150px" name="transfused" type="submit" id="transfused" value="Transfused Blood" onclick="location.href='/donateblood/blood/transfusedblood.php'"/></td>
+    <td bgcolor="#CC3366"><input style="width:150px" name="recipientsapp" type="submit" id="recipientsapp" value="Recipients Appointments" onclick="location.href='/finaldonate/appointments/adminrecipients.php'"/></td>
+    <td bgcolor="#CC3366"><input style="width:150px" name="transfused" type="submit" id="transfused" value="Transfused Blood" onclick="location.href='/finaldonate/blood/transfusedblood.php'"/></td>
   </tr>
   <tr>
-    <td bgcolor="#CC3366"><input style="width:150px" name="donorsapp" type="submit" id="donorsapp" value="Donors Appointments" onclick="location.href='/donateblood/appointments/admindonors.php'"/></td>
-    <td bgcolor="#CC3366"><input style="width:150px" name="discard" type="submit" id="discard" value="Discard Blood" onclick="location.href='/donateblood/blood/discardblood.php'"/></td>
+    <td bgcolor="#CC3366"><input style="width:150px" name="donorsapp" type="submit" id="donorsapp" value="Donors Appointments" onclick="location.href='/finaldonate/appointments/admindonors.php'"/></td>
+    <td bgcolor="#CC3366"><input style="width:150px" name="discard" type="submit" id="discard" value="Discard Blood" onclick="location.href='/finaldonatefinaldonate/blood/discardblood.php'"/></td>
   </tr>
   <tr>
     <td bgcolor="#CC3366">&nbsp;</td>
@@ -180,10 +174,10 @@ Password:<br/>
         	<h4><span></span>Our Services</h4>
             <div class="bottom_box">
                 <ul class="footer_list">
-                    <li><a href="/donateblood/services.html">Appointments booking</a></li>
-                    <li><a href="/donateblood/services.html">Blood donation services</a></li>
-                    <li><a href="/donateblood/services.html">Blood transfusion services</a></li>
-                    <li><a href="/donateblood/services.html">Health guidance</a></li>
+                    <li><a href="/finaldonate/services.html">Appointments booking</a></li>
+                    <li><a href="/finaldonate/services.html">Blood donation services</a></li>
+                    <li><a href="/finaldonate/services.html">Blood transfusion services</a></li>
+                    <li><a href="/finaldonate/services.html">Health guidance</a></li>
                     
                 </ul>  
 			</div>
@@ -191,11 +185,11 @@ Password:<br/>
         <div class="col one_third">
         	<h4><span></span>Contact us</h4>
             <div class="bottom_box">
-			 <p><em> Contact us using the social links. Find contact detailsfor specific hospitals in our <a href="/donateblood/contact.html">Contact Us</a> page. </em></p><br />
+			 <p><em> Contact us using the social links. Find contact detailsfor specific hospitals in our <a href="/finaldonate/contact.html">Contact Us</a> page. </em></p><br />
                 <div class="footer_social_button">
-                    <a href="#"><img src="/donateblood/images/facebook.png" title="facebook" alt="facebook" /></a>
-                    <a href="#"><img src="/donateblood/images/flickr.png" title="flickr" alt="flickr" /></a>
-                    <a href="#"><img src="/donateblood/images/twitter.png" title="twitter" alt="twitter" /></a>
+                    <a href="#"><img src="/finaldonate/images/facebook.png" title="facebook" alt="facebook" /></a>
+                    <a href="#"><img src="/finaldonate/images/flickr.png" title="flickr" alt="flickr" /></a>
+                    <a href="#"><img src="/finaldonate/images/twitter.png" title="twitter" alt="twitter" /></a>
                     
                 </div>
 			</div>
@@ -228,23 +222,22 @@ Password:<br/>
 	 
   // get details
    if (isset($_POST['update'])){
-   $ID = $_POST['ID'];
-  $firstname = $_POST['firstname'];
-  $lastname = $_POST['lastname'];
+   $idNumber = $_POST['idNumber'];
+  $firstname = $_POST['firstName'];
+  $lastname = $_POST['lastName'];
   $email = $_POST['email'];
   $mobile = $_POST['mobile'];
-  $empID = $_POST['empID'];
   $password =$_POST['password'];
- $password_hash=md5($password);
+ //$password_hash=md5($password);
 
-  if(!empty($ID) && !empty($firstname) && !empty($lastname) && !empty($email) && !empty($mobile) && !empty($empID) && !empty($password)){
+  if(!empty($idNumber) && !empty($firstname) && !empty($lastname) && !empty($email) && !empty($mobile) && !empty($password)){
 	   if (filter_var($email, FILTER_VALIDATE_EMAIL)){	
   
- $query= "UPDATE adminreg SET firstname='$firstname',lastname='$lastname', email='$email', mobile='$mobile', empID='$empID' WHERE ID='$ID' AND password='$password_hash'";
+ $query= "UPDATE users SET firstname='$firstname',lastname='$lastname', email='$email', mobile='$mobile' WHERE idNumber='$idNumber' AND password='$password'";
 if ($query_run= mysqli_query($con,$query)){
 echo 'record sucessfully updated';
 }
-else{echo 'record not updated. Ensure that your ID number and password are correct';}
+else{echo 'record not updated. Ensure that your idNumber number and password are correct';}
 }
 	    else{
 	   echo "invalid email address";

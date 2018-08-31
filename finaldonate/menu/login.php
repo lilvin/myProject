@@ -80,7 +80,7 @@ ddsmoothmenu.init({
 </div>	<!-- END of templatemo_header_wrapper -->
 
 <div id="templatemo_main">
-  <form id="form1" name="form1" method="post" action="recipientslogincon.php">
+  <form id="form1" name="form1" method="post" action="userlogincon.php">
     <label></label>
     <p>
       <label></label>

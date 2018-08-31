@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Donate Blood- Login Page</title>
+<title>Donate Blood- Change Password</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -52,8 +52,7 @@ ddsmoothmenu.init({
 
 <style type="text/css">
 <!--
-.style3 {color: #000000}
-.style4 {color: #CC0000}
+.style10 {color: #000000}
 -->
 </style>
 </head>
@@ -62,71 +61,70 @@ ddsmoothmenu.init({
 
 <div id="templatemo_header_wrapper">
   <div id="site_title">
-  <a href="index.html?lang=en&amp;style=style-default"
-              class="appbrand pull-left"><img src="images/blood2.jpg" width="200" height="100"></a>
+	<a href="/finaldonate/index.html?lang=en&amp;style=style-default"
+							class="appbrand pull-left"><img src="/finaldonate/images/blood2.jpg" width="200" height="100"></a>
   </div>
-     <div id="templatemo_menu" class="ddsmoothmenu">
+      <div id="templatemo_menu" class="ddsmoothmenu">
         <ul>
-            <li><a href="index.html" class="selected">Home</a></li>
-            <li><a href="about.html">About</a></li>
-      <li><a href="services.html">Services</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-      <li><a href="login.php">Login</a></li>
+			<li><a href="/finaldonate/index.html" >Log Out</a>
+			                </li>
 
         </ul>
         <br style="clear: left" />
     </div> <!-- end of templatemo_menu -->
     <div class="cleaner"></div>
-</div>  <!-- END of templatemo_header_wrapper -->>
+</div>	<!-- END of templatemo_header_wrapper -->
 
 <div id="templatemo_main">
+ <form id="form1" name="form1" method="post" action="">
 
-  <form id="form1" name="form1" method="post" action="userRegcon.php">
-    <label></label>
-    <p>
-      <label></label>
-    </p>
-    <table width="332" border="1" align="center">
-      <tr>
-        <th colspan="2" scope="col">Create an account </th>
-      </tr>
-      <tr>
-        <td>First Name </td>
-        <td><input name="firstName" maxlength="20" type="text" id="firstName" /></td>
-      </tr>
-      <tr>
-        <td>Last Name </td>
-        <td><input name="lastName" maxlength="20" type="text" id="lastName" /></td>
-      </tr>
-      <tr>
-        <td width="112">ID number </td>
-        <td width="204"><input name="idNumber" maxlength="8" type="text" id="idNumber" /></td>
-      </tr>
-      <tr>
-        <td>Email Address </td>
-        <td><input name="email" maxlength="50" type="text" id="email" /></td>
-      </tr>
-      <tr>
-        <td>Mobile </td>
-        <td><input name="mobile" maxlength="10" type="text" id="mobile" /></td>
-      </tr>
-      <tr>
-        <tr>
-        <td>Password</td>
-        <td><input name="password" type="password" id="password" /></td>
-      </tr>
-      <tr>
-        <td colspan="2"> <div align="center">
-          <input name="register" type="submit" id="submit" value="Create Account" />
-        </div></td>
-      </tr>
-    </table>
-    <label></label>
-  </form>
- 
   
+  
+ 
+  <br/></p>
+  <p><br/>
+  <br/>
+  <table width="332" border="1" align="center">
+    <tr>
+      <th colspan="2" scope="col"><span class="style10">Change password </span></th>
+    </tr>
+    <tr>
+      <td width="106"><span class="style10">Username</span></td>
+      <td width="210"><p><span class="style10">Your username </span> </p>
+          <p>
+            <input name="username" type="text" id="username" />
+        </p></td>
+    </tr>
+    <tr>
+      <td><span class="style10">Password</span></td>
+      <td><p class="style10">Your current password </p>
+          <p>
+            <input name="password" type="password" id="password" />
+        </p></td>
+    </tr>
+    <tr>
+      <td><span class="style10">New Password </span></td>
+      <td> <p class="style10">Enter new password </p>
+        <p>
+        <input name="newpassword" type="password" id="newpassword" />
+      </p></td>
+    </tr>
+    <tr>
+      <td colspan="2"><div align="center">
+          <input name="change" type="submit" id="change" value="Change Password" />
+      </div></td>
+    </tr>
+  </table>
+  <p><br/>
+      <br/>
+  <div>
+  
+  
+</p>
+ </form>
 </div> <!-- END of templatemo_main -->
+
+
 
 <div id="templatemo_bottom_wrapper">
     <div id="templatemo_bottom">
@@ -177,3 +175,64 @@ ddsmoothmenu.init({
 </body>
 </html>
 
+<?php
+
+//connecting to database
+$servername="localhost";
+$username="root";
+$password="";
+$dbname="bloodbank";
+
+$con=new mysqli($servername,$username,$password,$dbname) or die("failed to connect to server");
+if (mysqli_connect_error()){
+die("connection failed:".mysqli_connect_error());
+}
+
+if (isset($_POST['change']))
+{
+$username = $_POST['username'];
+  $newpassword =$_POST['newpassword'];
+  $password = $_POST['password'];
+
+  
+  if(!empty($username) && !empty($password) && !empty($newpassword)){
+  
+  $query ="SELECT * FROM users WHERE (email='$username' AND password='$password')";
+  
+  if ($query_run= mysqli_query($con,$query)){
+  	
+        if(mysqli_num_rows($query_run)==1){
+   
+   echo 'yees';
+   while($row= $query_run->fetch_assoc()){
+  $username = $row['email'];
+$dpassword = $row['password']; 
+if ($dpassword==$password){
+
+ $query= "UPDATE users SET password='$newpassword' WHERE email='$username'";
+if ($query_run= mysqli_query($con,$query)){
+echo 'record sucessfully updated';
+}
+else{echo 'record not updated';}
+}
+else{echo 'The entered username/password do not match records';}
+}
+         }
+	 else{echo 'Wrong username/password combination'.  mysqli_error($con);} 
+   }
+   
+   else{echo 'Failed to select details from database'.  mysqli_error($con);}
+   }
+  else{echo 'Please insert a username and password'.  mysqli_error($con);}
+     }
+	 
+	 
+  // get details
+  
+  
+  
+
+
+
+  
+?>

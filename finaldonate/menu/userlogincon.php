@@ -15,11 +15,10 @@ if (isset($_POST['login']))
 {
 $username = $_POST['username'];
   $password =$_POST['password'];
- //$password_hash=md5($password);
+  //$password_hash=md5($password);
   
   if(!empty($username) && !empty($password)){
-  $query ="SELECT * FROM users WHERE (email='$username' AND password='$password')AND (userType LIKE'admin')";
-  //$password_hash')";
+  $query ="SELECT * FROM users WHERE (email='$username' AND password='$password') AND(userType LIKE'user')";
   
   if ($query_run= mysqli_query($con,$query)){
   	
@@ -27,13 +26,11 @@ $username = $_POST['username'];
    
    echo 'yees';
    while($row= $query_run->fetch_assoc()){
-  
-$firstName = $row['firstName'];
-$lastName = $row['lastName'];
-$id = $row['idNumber'];
-$mobile = $row['mobile'];
+  $idNumber = $row['idNumber'];
+$firstname = $row['firstName'];
+$lastname = $row['lastName'];
 $email = $row['email'];
-$password=$row['password'];
+$mobile = $row['mobile'];
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -90,12 +87,8 @@ ddsmoothmenu.init({
 
 <style type="text/css">
 <!--
-.style8 {
-	font-size: 14px;
-	color: #CC0000;
-}
-.style9 {color: #CC0000}
-.style10 {color: #000000}
+.style3 {color: #000000}
+.style4 {color: #CC0000}
 -->
 </style>
 </head>
@@ -114,7 +107,7 @@ ddsmoothmenu.init({
 			<li><a href="/finaldonate/services.html">Services</a></li>
             <li><a href="/finaldonate/blog.html" >Blog</a></li>
             <li><a href="/finaldonate/contact.html" >Contact Us</a></li>
-			<li><a href="/finaldonate/menu/adminlogin.php">Log Out</a>
+			<li><a href="/finaldonate/index.html" >Log Out</a>
           </li>
         </ul>
         <br style="clear: left" />
@@ -124,62 +117,104 @@ ddsmoothmenu.init({
 
 <div id="templatemo_main">
  
-  <br/></p>
-<table width="669" border="1" align="center">
+<div id="inputs" style="width:500px; height:300px; margin-left:100px; border:3px solid #a1a1a1">
+<table width="500" height:300px; border="1" align="center" >
   <tr>
-    <th colspan="2" scope="col"><span class="style8">Personal Details</span> </th>
-    <th colspan="2" bgcolor="#FFFFFF" scope="col"><span class="style9">Menu</span></th>
+    <th colspan="2" rowspan="7" scope="col">
+	<!-- begin table inside table-->
+	
+<form id="form1" name="form1" method="post" action="">
+<span class="style4">Personal Details</span><br/>
+ID number:<br/>      
+  <input name="idNumber" type="text" maxlength="8" id="idNumber" value="<?php echo $idNumber; ?>" disabled>
+  <br/>
+First name:<br/>    
+<input name="firstname" type="text" maxlength="20" id="firstname" value="<?php echo $firstname; ?>"disabled>
+<br/>
+Last name:<br/> 
+<input name="lastname" type="text" maxlength="20" id="lastname" value="<?php echo $lastname; ?>"disabled>
+<br/>
+Email address:<br/>
+<input name="email" type="text" maxlength="50" id="email" value="<?php echo $email; ?>"disabled>
+<br/>
+Mobile:<br/>  
+<input name="mobile" type="text" maxlength="10" id="mobile" value="<?php echo $mobile; ?>"disabled>
+<br/>
+<br/>
+</form>
+</th>
+</tr>
+<!--second column-->
+<tr>
+    <th colspan="2" bgcolor="#FFFFFF" scope="col"><span class="style9">Recipient Menu </span></th>
   </tr>
   <tr>
-    <td width="121"><span class="style10">ID number </span></td>
-    <td width="201"><p>
-      <input name="id" maxlength="8" type="text" id="idNumber" value="<?php echo $id; ?>"disabled/>
-      </p>        </td>
-    <td width="150" bgcolor="#CC3366"><input  style="width:150px" name="update" type="submit" id="update" value="Update personal Details" onclick="location.href='/finaldonate/menu/adminupdate.php'"/>	</td>
-    <td width="169" bgcolor="#CC3366"><input style="width:150px"  name="hospitals" type="submit" id="hospitals" value="Hospitals" onclick="location.href='/finaldonate/hospitals/hospitals.php'"/></td>
+    <td width="150" bgcolor="#CC3366"><input name="update" type="submit" id="update" value="Update details"  onclick="location.href='/finaldonate/menu/userupdate.php'"/></td>
+    <td width="1" bgcolor="#CC3366">&nbsp;</td>
   </tr>
   <tr>
-    <td><span class="style10">First Name</span> </td>
-    <td><p>
-      <input name="firstName"  maxlength="20" type="text" id="firstName" value="<?php echo $firstName; ?>" disabled/>
-      </p>        </td>
-	  
-    <td bgcolor="#CC3366"><input  style="width:150px" name="password" type="submit" id="password" value="Change Password" onclick="location.href='/finaldonate/password/adminpassword.php'"/></td>
-    <td bgcolor="#CC3366"><input style="width:150px" name="types" type="submit" id="types" value="Blood Counts" onclick="location.href='/finaldonate/blood/bloodtypes.php'"/></td>
+    <td bgcolor="#CC3366"><input name="password" type="submit" id="password" value="Change Password" onclick="location.href='/finaldonate/password/userpassword.php'"/></td>
+    <td bgcolor="#CC3366">&nbsp;</td>
   </tr>
   <tr>
-    <td><span class="style10">Last Name</span> </td>
-    <td><input name="lastname" maxlength="20" type="text" id="lastname" value="<?php echo $lastName; ?>"disabled /></td>
-    <td bgcolor="#CC3366"><input style="width:150px" name="processed" type="submit" id="processed" value="Processed Blood" onclick="location.href='/finaldonate/blood/processedblood.php'"/></td>
-    <td bgcolor="#CC3366"><input style="width:150px" name="donated" type="submit" id="donated" value="Donated Blood" onclick="location.href='/finaldonate/blood/donatedblood.php'"/></td>
+    <td bgcolor="#CC3366"><input name="hospital" type="submit" id="hospital" value="Search for hospital" onclick="location.href='/donateblood/hospitals/searchhospital.php'"/></td>
+    <td bgcolor="#CC3366">&nbsp;</td>
   </tr>
   <tr>
-    <td><span class="style10">Email Address </span></td>
-    <td><input name="email" maxlength="50" type="text" id="email" value="<?php echo $email; ?>"disabled/></td>
-    <td bgcolor="#CC3366"><input style="width:150px" name="recipientsapp" type="submit" id="recipientsapp" value="Recipients Appointments" onclick="location.href='/finaldonate/appointments/adminrecipients.php'"/></td>
-    <td bgcolor="#CC3366"><input style="width:150px" name="transfused" type="submit" id="transfused" value="Transfused Blood" onclick="location.href='/finaldonate/blood/transfusedblood.php'"/></td>
+    <td bgcolor="#CC3366"><input name="appointment" type="submit" id="appointment" value="Book appointment" onclick="location.href='/donateblood/appointments/recipientsappointments.php'"/></td>
+    <td bgcolor="#CC3366">&nbsp;</td>
   </tr>
   <tr>
-    <td><span class="style10">Mobile</span></td>
-    <td><input name="mobile" maxlength="10" type="text" id="mobile" value="<?php echo $mobile; ?>"disabled/></td>
-    <td bgcolor="#CC3366"><input style="width:150px" name="donorsapp" type="submit" id="donorsapp" value="Donors Appointments" onclick="location.href='/finaldonate/appointments/admindonors.php'"/></td>
-    <td bgcolor="#CC3366"><input style="width:150px" name="discard" type="submit" id="discard" value="Discard Blood" onclick="location.href='/finaldonate/blood/discardblood.php'"/></td>
+    <td bgcolor="#CC3366"><input name="cancel" type="submit" id="cancel" value="Cancel appointment" onclick="location.href='/donateblood/appointments/recipientscancel.php'"/></td>
+    <td bgcolor="#CC3366">&nbsp;</td>
+  </tr>
+  </tr>
+
+ <!--  <br/>
+  <br/>
+  <tr>
+   <th colspan="2" bgcolor="#FFFFFF" scope="col"><span class="style9">Donor Menu</span></th>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
+    <td width="150" bgcolor="#CC3366"><input name="update" type="submit" id="update" value="Update details"  onclick="location.href='/donateblood/menu/donorsupdate.php'"/></td>
+    <td width="1" bgcolor="#CC3366">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CC3366"><input name="password" type="submit" id="password" value="Change Password" onclick="location.href='/donateblood/password/donorspassword.php'"/></td>
+    <td bgcolor="#CC3366">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CC3366"><input name="hospital" type="submit" id="hospital" value="Search for hospital" onclick="location.href='/donateblood/hospitals/searchhospital.php'"/></td>
+    <td bgcolor="#CC3366">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CC3366"><input name="appointment" type="submit" id="appointment" value="Book appointment" onclick="location.href='/donateblood/appointments/donorsappointments.php'"/></td>
+    <td bgcolor="#CC3366">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CC3366"><input name="cancel" type="submit" id="cancel" value="Cancel appointment" onclick="location.href='/donateblood/appointments/donorscancel.php'"/></td>
+    <td bgcolor="#CC3366">&nbsp;</td>
+  </tr>
+  <tr>
     <td bgcolor="#CC3366">&nbsp;</td>
     <td bgcolor="#CC3366">&nbsp;</td>
   </tr>
   <tr>
     <td colspan="4"><div align="center"></div></td>
   </tr>
+</tr> -->
 </table>
-<p><br/>
-  <br/>
-  <br/>
-  <br/>
-<!-- END of templatemo_main -->
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<div>
+</div> <!-- END of templatemo_main -->
+
+
+
 <div id="templatemo_bottom_wrapper">
     <div id="templatemo_bottom">
     	<div class="col one_third">
@@ -242,26 +277,25 @@ ddsmoothmenu.init({
      }
 	 
 	 
-  // get details
+  // update details
    if (isset($_POST['update'])){
-    $firstName = $_POST['firstName'];
-    $lastName = $_POST['lastName'];
-    $idNumber = $_POST['idNumber'];
-    $mobile =$_POST['mobile'];
-    $email = $_POST['email'];
-    $password=$_POST['password'];
-    //$password_hash=md5($password);
-
-  if(!empty($id) && !empty($firstName) && !empty($lastName) && !empty($email) && !empty($mobile) && !empty($password)){
+   $idNumber = $_POST['idNumber'];
+  $firstname = $_POST['firstname'];
+  $lastname = $_POST['lastname'];
+  $email = $_POST['email'];
+  $mobile = $_POST['mobile'];
+  $password = $_POST['password'];
+  //$password_hash=md5($password);
+  
+   if(!empty($idNumber) && !empty($firstname) && !empty($lastname) && !empty($email) && !empty($mobile) && !empty($password)){
 	   if (filter_var($email, FILTER_VALIDATE_EMAIL)){
-	   	   $query ="SELECT * FROM users WHERE (idNumber='$idNumber' AND password='$password')";
+	   $query ="SELECT * FROM users WHERE (idNumber='$idNumber' AND password='$password')";
   
   if ($query_run= mysqli_query($con,$query)){
   	
         if(mysqli_num_rows($query_run)==1){
-	
   
- $query= "UPDATE users SET firstName='$firstname',lastName='$lastname', email='$email', mobile='$mobile'WHERE id='$idNumber' AND password='$password'";
+ $query= "UPDATE users SET firstName='$firstname',lastName='$lastname', email='$email', mobile='$mobile' WHERE idNumber='$idNumber' AND password='$password'";
 if ($query_run= mysqli_query($con,$query)){
 echo 'record sucessfully updated';
 }
