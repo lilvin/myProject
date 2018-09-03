@@ -101,7 +101,7 @@ ddsmoothmenu.init({
 <div id="templatemo_main">
  
   <br/></p>
-<div id="inputs" style="width:500px; height:350px; margin-left:100px; border:3px solid #a1a1a1">
+<div id="inputs" align="center" style="width:500px; height:350px; margin-left:100px; border:3px solid #a1a1a1">
 <table width="500" height:350px; border="1" align="center" >
   <tr>
     <th colspan="2" rowspan="7" scope="col">
@@ -229,12 +229,13 @@ Password:<br/>
   $email = $_POST['email'];
   $mobile = $_POST['mobile'];
   $password = $_POST['password'];
+  $userType="user";
   //$password_hash=md5($password);
   
    if(!empty($idNumber) && !empty($firstname) && !empty($lastname) && !empty($email) && !empty($mobile) && !empty($password)){
 	   if (filter_var($email, FILTER_VALIDATE_EMAIL)){
   
- $query= "UPDATE users SET firstname='$firstname',lastname='$lastname', email='$email', mobile='$mobile' WHERE idNumber='$idNumber' AND password='$password'";
+ $query= "UPDATE users SET firstname='$firstname',lastname='$lastname', email='$email', mobile='$mobile' WHERE idNumber='$idNumber',password='$password' AND userType='$userType'";
 if ($query_run= mysqli_query($con,$query)){
 echo 'record sucessfully updated';
 }

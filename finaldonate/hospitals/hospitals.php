@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Donate Blood- Login Page</title>
+<title>Donate Blood- Hospitals</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -53,6 +53,9 @@ ddsmoothmenu.init({
 <style type="text/css">
 <!--
 .style3 {color: #000000}
+.style7 {            width: 157px;
+}
+.style8 {color: #CC0000}
 -->
 </style>
 </head>
@@ -66,12 +69,13 @@ ddsmoothmenu.init({
   </div>
       <div id="templatemo_menu" class="ddsmoothmenu">
         <ul>
-            <li><a href="/finaldonate/index.html">Home</a></li>
-            <li><a href="/finaldonate/about.html" >About</a></li>
-			<li><a href="/finaldonate/services.html">Services</a></li>
-            <li><a href="/finaldonate/blog.html" >Blog</a></li>
-            <li><a href="/finaldonate/contact.html" >Contact Us</a></li>
-			<li><a href="/finaldonate/menu/donorslogin.php" class="selected">Login</a></li>
+            <li><a href="/donateblood/index.html">Home</a></li>
+            <li><a href="/donateblood/about.html" >About</a></li>
+			<li><a href="/donateblood/services.html">Services</a></li>
+            <li><a href="/donateblood/blog.html" >Blog</a></li>
+            <li><a href="/donateblood/contact.html" >Contact Us</a></li>
+			<li><a href="/donateblood/index.html" >Log Out</a>
+			                </li>
 
         </ul>
         <br style="clear: left" />
@@ -80,51 +84,108 @@ ddsmoothmenu.init({
 </div>	<!-- END of templatemo_header_wrapper -->
 
 <div id="templatemo_main">
-  <form id="form1" name="form1" method="post" action="userlogincon.php">
+<table width="750" height="373" border="1" align="center" height:400px; >
+  <tr>
+    <th colspan="2" rowspan="7" scope="col">
+<!--newtable inside big table -->
+
+  <form id="form1" name="form1" method="post" action="hospitalscon.php">
     <label></label>
     <p>
       <label></label>
     </p>
-    <table width="332" border="1" align="center">
+    <table width="481" border="1" align="center">
       <tr>
-        <th colspan="2" scope="col">Login to proceed. <a style="color:green" href="userReg.php" >Register</a> if you do not have an account.</th>
+        <th colspan="2" scope="col"><span class="style8">Hospital Details </span></th>
+        <th scope="col"><div align="left"></div></th>
       </tr>
       <tr>
-        <td width="58"><span class="style3">Username</span></td>
-        <td width="258"><p><span class="style3">Your email address</span>
-          </p>
-          <p>
-            <input name="username" type="text" id="username" />
-        </p></td>
+        <td width="102"><span class="style3">Hospital ID </span></td>
+        <td width="196"><input name="hospitalID" type="text" id="hospitalID" /></td>
+        <td width="161">
+          
+          <div align="left">
+            <input style="width:120px" name="add" type="submit" id="submit" value="Add Hospital" />
+          </div></td>
       </tr>
       <tr>
-        <td><span class="style3">Password</span></td>
-        <td><p>Your password </p>
-          <p>
-            <input name="password" type="password" id="password" />
-          </p></td>
+        <td><span class="style3">Hospital Name </span></td>
+        <td><input name="name" type="text" id="name" /></td>
+        <td>
+          
+          <div align="left">
+            <input style="width:120px" name="search" type="submit" id="search" value="Search Hospital" />
+          </div></td>
       </tr>
       <tr>
-        <td colspan="2"> <div align="center">
-          <input type="submit" name="login" value="Login" />
-        </div></td>
+        <td><span class="style3">Mobile Number</span></td>
+        <td><input name="telephone" type="text" id="telephone" /></td>
+        <td>
+          
+          <div align="left">
+            <input style="width:120px" name="update" type="submit" id="update" value="Update Record" />
+          </div></td>
+      </tr>
+      <tr>
+        <td><span class="style3">Location</span></td>
+        <td><input name="location" type="text" id="location" /></td>
+        <td>
+          
+          <div align="left">
+            <input style="width:120px" name="delete" type="submit" id="delete" value="Delete Record" />
+          </div></td>
+      </tr>
+      <tr>
+        <td><span class="style3">Email</span></td>
+        <td><input name="email" type="text" id="email" /></td>
+        <td>
+        </tr>
+      <tr>
+        <td colspan="3"> <div align="center">
+          <p class="style3">&nbsp;</p>
+          <p class="style3">&nbsp;</p>
+        </div></td>finaldonate
       </tr>
     </table>
+    <p align="center" class="style3">&nbsp;</p>
     
   </form>
- 
-    <table width="330" border="1" align="center" style="margin-top:5px">
-      <tr>
-        <td><div align="center">
-          <input name="forgot" type="submit" id="forgot" value="Forgot Password" onClick="location.href='/finaldonate/password/userforgot.php'"/>
-        </div></td>
-      </tr>
-    </table>
-  <p></p>
-   
+  <!--second column-->
+	 </th>
+    <th colspan="2" bgcolor="#FFFFFF" scope="col"><span class="style9">Menu</span></th>
+  </tr>
+  <tr>
+    <td width="179" bgcolor="#CC3366"><input  style="width:150px" name="update2" type="submit" id="update2" value="Update personal Details" onclick="location.href='/finaldonate/menu/adminupdate.php'"/>    </td>
+    <td width="169" bgcolor="#CC3366"><input style="width:150px"  name="hospitals" type="submit" id="hospitals" value="Hospitals" onclick="location.href='/finaldonate/hospitals/hospitals.php'"/></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CC3366"><input  style="width:150px" name="password" type="submit" id="password" value="Change Password" onclick="location.href='/finaldonate/password/adminpassword.php'"/></td>
+    <td bgcolor="#CC3366"><input style="width:150px" name="types" type="submit" id="types" value="Blood Counts" onclick="location.href='/finald/finaldonate/bloodtypes.php'"/></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CC3366"><input style="width:150px" name="processed" type="submit" id="processed" value="Processed Blood" onclick="location.href='/finaldonate/blood/processedblood.php'"/></td>
+    <td bgcolor="#CC3366"><input style="width:150px" name="donated" type="submit" id="donated" value="Donated Blood" onclick="location.href='/finaldonate/blood/donatedblood.php'"/></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CC3366"><input style="width:150px" name="recipientsapp" type="submit" id="recipientsapp" value="Recipients Appointments" onclick="location.href='/finaldonate/appointments/adminrecipients.php'"/></td>
+    <td bgcolor="#CC3366"><input style="width:150px" name="transfused" type="submit" id="transfused" value="Transfused Blood" onclick="location.href='/finaldonate/blood/transfusedblood.php'"/></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CC3366"><input style="width:150px" name="donorsapp" type="submit" id="donorsapp" value="Donors Appointments" onclick="location.href='/finald/appointments/admindonors.php'"/></td>
+    <td bgcolor="#CC3366"><input style="width:150px" name="discard" type="submit" id="discard" value="Discard Blood" onclick="location.href='/finald/blood/discardblood.php'"/></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CC3366">&nbsp;</td>
+    <td bgcolor="#CC3366">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="4"><div align="center"></div></td>
+  </tr>
+</table>
+
+
+  
 </div> <!-- END of templatemo_main -->
-
-
 
 <div id="templatemo_bottom_wrapper">
     <div id="templatemo_bottom">

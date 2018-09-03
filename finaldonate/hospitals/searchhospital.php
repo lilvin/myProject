@@ -1,8 +1,9 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Donate Blood- Login Page</title>
+<title>Donate Blood- Hospitals</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -53,7 +54,9 @@ ddsmoothmenu.init({
 <style type="text/css">
 <!--
 .style3 {color: #000000}
-.style4 {color: #CC0000}
+.style7 {            width: 157px;
+}
+.style8 {color: #CC0000}
 -->
 </style>
 </head>
@@ -62,66 +65,80 @@ ddsmoothmenu.init({
 
 <div id="templatemo_header_wrapper">
   <div id="site_title">
-  <a href="index.html?lang=en&amp;style=style-default"
-              class="appbrand pull-left"><img src="/finaldonate/images/blood2.jpg" width="200" height="100"></a>
+	<a href="/finaldonate/index.html?lang=en&amp;style=style-default"
+							class="appbrand pull-left"><img src="/finaldonate/images/blood2.jpg" width="200" height="100"></a>
   </div>
-     <div id="templatemo_menu" class="ddsmoothmenu">
+      <div id="templatemo_menu" class="ddsmoothmenu">
         <ul>
-            <li><a href="index.html" class="selected">Home</a></li>
-            <li><a href="about.html">About</a></li>
-      <li><a href="services.html">Services</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-      <li><a href="login.php">Login</a></li>
+            <li><a href="/finaldonate/index.html">Home</a></li>
+            <li><a href="/finaldonate/about.html" >About</a></li>
+			<li><a href="/finaldonate/services.html">Services</a></li>
+            <li><a href="/finaldonate/blog.html" >Blog</a></li>
+            <li><a href="/finaldonate/contact.html" >Contact Us</a></li>
+			<li><a href="/finaldonate/index.html" >Log Out</a>
+			                </li>
 
         </ul>
         <br style="clear: left" />
     </div> <!-- end of templatemo_menu -->
     <div class="cleaner"></div>
-</div>  <!-- END of templatemo_header_wrapper -->>
+</div>	<!-- END of templatemo_header_wrapper -->
 
 <div id="templatemo_main">
 
-  <form id="form1" name="form1" method="post" action="userRegcon.php">
+  <form id="form1" name="form1" method="post" action="search.php">
     <label></label>
     <p>
       <label></label>
     </p>
-    <table width="332" border="1" align="center">
+    <table width="450" border="1" align="center">
       <tr>
-        <th colspan="2" scope="col">Create an account </th>
+        <th colspan="2" scope="col"><span class="style8">Insert hospital ID and click search to get details. To physicaly view the location go to the <a href="/finaldonate/contact.html" >Contact Us</a> page </span>          <div align="left"></div></th>
       </tr>
       <tr>
-        <td>First Name </td>
-        <td><input name="firstName" maxlength="20" type="text" id="firstName" /></td>
+        <td width="102"><span class="style3">Hospital ID </span></td>
+        <td width="332"><input name="hospitalID" type="text" id="hospitalID" />
+          
+          <span class="style3">
+          <input style="width:120px" name="search" type="submit" id="search" value="Search Hospital" />
+          </span>
+        <div align="left"></div></td>
+      </tr>
+       <tr>
+        <td><span class="style3">Location</span></td>
+        <td><input name="location" type="text" id="location"  />
+          
+        <div align="left"></div></td>
       </tr>
       <tr>
-        <td>Last Name </td>
-        <td><input name="lastName" maxlength="20" type="text" id="lastName" /></td>
+        <td><span class="style3">Hospital Name </span></td>
+        <td><input name="name" type="text" id="name" />
+          
+        <div align="left"></div></td>
       </tr>
       <tr>
-        <td width="112">ID number </td>
-        <td width="204"><input name="idNumber" maxlength="8" type="text" id="idNumber" /></td>
+        <td><span class="style3">mobile Number</span></td>
+        <td><input name="mobileNo" type="text" id="mobileNo"  />
+          
+        <div align="left"></div></td>
       </tr>
-      <tr>
-        <td>Email Address </td>
-        <td><input name="email" maxlength="50" type="text" id="email" /></td>
+       <tr>
+        <td><span class="style3">Email</span></td>
+        <td><input name="email" type="text" id="email"  />
+          
+        <div align="left"></div></td>
       </tr>
-      <tr>
-        <td>Mobile </td>
-        <td><input name="mobile" maxlength="10" type="text" id="mobile" /></td>
-      </tr>
-      <tr>
-        <tr>
-        <td>Password</td>
-        <td><input name="password" type="password" id="password" /></td>
-      </tr>
+      
       <tr>
         <td colspan="2"> <div align="center">
-          <input name="register" type="submit" id="submit" value="Create Account" />
+          <p class="style3">&nbsp;</p>
+          <p class="style3">&nbsp;</p>
         </div></td>
       </tr>
     </table>
+    <p align="center" class="style3">&nbsp;</p>
+   
+    <p>&nbsp;</p>
     <label></label>
   </form>
  
@@ -176,4 +193,7 @@ ddsmoothmenu.init({
 
 </body>
 </html>
+
+
+
 

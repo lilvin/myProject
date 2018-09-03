@@ -52,7 +52,7 @@ ddsmoothmenu.init({
 
 <style type="text/css">
 <!--
-.style3 {color: #000000}
+.style4 {color: #CC0000}
 -->
 </style>
 </head>
@@ -66,12 +66,13 @@ ddsmoothmenu.init({
   </div>
       <div id="templatemo_menu" class="ddsmoothmenu">
         <ul>
-            <li><a href="/finaldonate/index.html">Home</a></li>
-            <li><a href="/finaldonate/about.html" >About</a></li>
-			<li><a href="/finaldonate/services.html">Services</a></li>
-            <li><a href="/finaldonate/blog.html" >Blog</a></li>
-            <li><a href="/finaldonate/contact.html" >Contact Us</a></li>
-			<li><a href="/finaldonate/menu/donorslogin.php" class="selected">Login</a></li>
+            <li><a href="/donateblood/index.html">Home</a></li>
+            <li><a href="/donateblood/about.html" >About</a></li>
+			<li><a href="/donateblood/services.html">Services</a></li>
+            <li><a href="/donateblood/blog.html" >Blog</a></li>
+            <li><a href="/donateblood/contact.html" >Contact Us</a></li>
+			<li><a href="/donateblood/index.html" >Log Out</a>
+			                </li>
 
         </ul>
         <br style="clear: left" />
@@ -80,52 +81,22 @@ ddsmoothmenu.init({
 </div>	<!-- END of templatemo_header_wrapper -->
 
 <div id="templatemo_main">
-  <form id="form1" name="form1" method="post" action="userlogincon.php">
-    <label></label>
-    <p>
-      <label></label>
-    </p>
-    <table width="332" border="1" align="center">
-      <tr>
-        <th colspan="2" scope="col">Login to proceed. <a style="color:green" href="userReg.php" >Register</a> if you do not have an account.</th>
-      </tr>
-      <tr>
-        <td width="58"><span class="style3">Username</span></td>
-        <td width="258"><p><span class="style3">Your email address</span>
-          </p>
-          <p>
-            <input name="username" type="text" id="username" />
-        </p></td>
-      </tr>
-      <tr>
-        <td><span class="style3">Password</span></td>
-        <td><p>Your password </p>
-          <p>
-            <input name="password" type="password" id="password" />
-          </p></td>
-      </tr>
-      <tr>
-        <td colspan="2"> <div align="center">
-          <input type="submit" name="login" value="Login" />
-        </div></td>
-      </tr>
-    </table>
-    
-  </form>
- 
-    <table width="330" border="1" align="center" style="margin-top:5px">
-      <tr>
-        <td><div align="center">
-          <input name="forgot" type="submit" id="forgot" value="Forgot Password" onClick="location.href='/finaldonate/password/userforgot.php'"/>
-        </div></td>
-      </tr>
-    </table>
-  <p></p>
-   
-</div> <!-- END of templatemo_main -->
+
+<div id="inputs" align="center" style="width:500px; height:300px; margin-left:100px; border:3px solid #a1a1a1">
+ <form id="form1" name="form1" method="post" action="hospitalscon.php">
+   <span class="style4">Confirmation dialog   </span><br/> 
+   Are you sure you want to delete this record?
+<br/>
+<br/>
 
 
 
+<input name="delete" type="submit" id="delete" value="Yes"  onClick=""/>
+<input name="No" type="submit" id="No" value="No" onclick="location.href='/donateblood/hospitals/hospitals.php'"/>
+ </form>
+ </div>
+ </div>
+ <!-- END of templatemo_main -->
 <div id="templatemo_bottom_wrapper">
     <div id="templatemo_bottom">
     	<div class="col one_third">
@@ -174,4 +145,3 @@ ddsmoothmenu.init({
 
 </body>
 </html>
-

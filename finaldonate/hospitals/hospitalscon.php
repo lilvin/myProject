@@ -11,12 +11,61 @@ if (mysqli_connect_error()){
 die("connection failed:".mysqli_connect_error());
 }
 
+//add hospital
+if (isset($_POST['add']))
+{
+ $ID = $_POST['hospitalID'];
+  $name = $_POST['name'];
+   $telephone = $_POST['telephone'];
+    $location = $_POST['location'];
+    $email=$_POST['email'];
+	  if(!empty($ID) && !empty($name) && !empty($telephone) && !empty($location)){
+	   
+	   $sql = "INSERT INTO hospitals(hospitalID,name,mobileNo,location,email) VALUES ('$ID','$name','$telephone','$location','$email')";
+	   
+	   if($con->query($sql)===TRUE)
+	   {
+	   echo"registration successfull";
+	   }
+	   else{
+	   echo "Error:" . $sql. "<br>" . $con->error;
+	   }
+	   $con->close();
+	   }
+	    else{echo 'Please insert all hospital details'.  mysqli_error($con);}
+	   }
+	   
+//get details
+if (isset($_POST['search']))
+{
+$ID = $_POST['hospitalID'];
+ 
+
+  
+  if(!empty($ID)){
+  $query ="SELECT * FROM hospitals WHERE (hospitalID='$ID')";
+  
+  if ($query_run= mysqli_query($con,$query)){
+  	
+        if(mysqli_num_rows($query_run)==1){
+   
+   echo 'yees';
+   while($row= $query_run->fetch_assoc()){
+  $ID = $row['hospitalID'];
+ $name =$row['name'];
+  $telephone =$row['mobileNo'];
+  $location =$row['location'];
+  
+  $cquery ="SELECT  COUNT (*) FROM processedblood WHERE (hospital='$ID')";
+$ancount=$cquery;
+
 ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Donate Blood- Login Page</title>
+<title>Donate Blood- Hospitals</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -27,16 +76,15 @@ die("connection failed:".mysqli_connect_error());
 	</style>
 <link href="/finaldonate/css/templatemo_style.css" rel="stylesheet" type="text/css" />
 <!-- templatemo 358 carousel -->
-<!-- 
-Carousel Template 
-http://www.templatemo.com/preview/templatemo_358_carousel 
--->
+
+<!-- Carousel Template 
+http://www.templatemo.com/preview/templatemo_358_carousel  -->
 <script type="text/javascript" src="/finaldonate/js/jquery-1-4-2.min.js"></script> 
-<!--script type="text/javascript" src="/jqueryui/js/jquery-ui-1.7.2.custom.min.js"></script--> 
+<script type="text/javascript" src="/jqueryui/js/jquery-ui-1.7.2.custom.min.js"></script>
 <script type="text/javascript" src="/finaldonate/js/jquery-ui.min.js"></script> 
 <script type="text/javascript" src="/finaldonate/js/showhide.js"></script> 
 <link rel="stylesheet" href="/finaldonate/css/slimbox2.css" type="text/css" media="screen" /> 
-<script type="text/JavaScript" src="/finaldonate/js/jquery.mousewheel.js"></script> 
+<script type="text/JavaScript" src="/donateblood/js/jquery.mousewheel.js"></script> 
 <script type="text/JavaScript" src="/finaldonate/js/slimbox2.js"></script> 
 
 <link rel="stylesheet" type="text/css" href="/finaldonate/css/ddsmoothmenu.css" />
@@ -66,12 +114,10 @@ ddsmoothmenu.init({
 
 <style type="text/css">
 <!--
-.style8 {
-	font-size: 14px;
-	color: #CC0000;
+.style3 {color: #000000}
+.style7 {            width: 157px;
 }
-.style9 {color: #CC0000}
-.style10 {color: #000000}
+.style8 {color: #CC0000}
 -->
 </style>
 </head>
@@ -80,13 +126,18 @@ ddsmoothmenu.init({
 
 <div id="templatemo_header_wrapper">
   <div id="site_title">
-	<a href="/finaldonatefinaldonate/index.html?lang=en&amp;style=style-default"
+	<a href="/finaldonate/index.html?lang=en&amp;style=style-default"
 							class="appbrand pull-left"><img src="/finaldonate/images/blood2.jpg" width="200" height="100"></a>
   </div>
       <div id="templatemo_menu" class="ddsmoothmenu">
-         <ul>
-      <li><a href="/finaldonate/menu/adminlogin.php" class="selected">Logout</a>
-                     </li>
+        <ul>
+            <li><a href="/finaldonate/index.html">Home</a></li>
+            <li><a href="/finaldonate/about.html" >About</a></li>
+			<li><a href="/finaldonate/services.html">Services</a></li>
+            <li><a href="/finaldonate/blog.html" >Blog</a></li>
+            <li><a href="/finaldonate/contact.html" >Contact Us</a></li>
+			<li><a href="/finaldonate/index.html" >Log Out</a>
+			                </li>
 
         </ul>
         <br style="clear: left" />
@@ -95,45 +146,88 @@ ddsmoothmenu.init({
 </div>	<!-- END of templatemo_header_wrapper -->
 
 <div id="templatemo_main">
- 
-  <br/></p>
-<div id="inputs" style="width:750px; height:340px; margin-left:100px; border:3px solid #a1a1a1">
-
-<table width="750px" height:400px; border="1" align="center" >
+<table width="750" height="373" border="1" align="center" height:400px; >
   <tr>
-    <th width="1" colspan="2" rowspan="7" scope="col">
-	<form id="form1" name="form1" method="post" action="/finaldonate/menu/adminlogincon.php">
+    <th colspan="2" rowspan="7" scope="col">
+<!--newtable inside big table -->
 
-<span class="style4">Personal Details</span><br/>
-ID number:<br/>      
-  <input name="idNumber" type="text" maxlength="8" id="idNumber" >
-  <br/>
-First name:<br/>    
-<input name="firstName" type="text" maxlength="20" id="firstname" >
-<br/>
-Last name:<br/> 
-<input name="lastName" type="text" maxlength="20" id="lastname" >
-<br/>
-Email address:<br/>
-<input name="email" type="text" maxlength="50" id="email" >
-<br/>
-Mobile:<br/>  
-<input name="mobile" type="text" maxlength="10" id="mobile" >
-<br/>
-Password:<br/>  
-<input name="password" type="password"  id="password" >
-<br/>
-<p></p><br/>
-
-<br/>
-
-<input name="update" type="submit" id="update" value="Update details"  onClick=""/>
-</form>
-</th>
+  <form id="form1" name="form1" method="post" action="hospitalscon.php">
+    <label></label>
+    <p>
+      <label></label>
+    </p>
+    <table width="481" border="1" align="center">
+      <tr>
+        <th colspan="2" scope="col"><span class="style8">Hospital Details </span></th>
+        <th scope="col"><div align="left"></div></th>
+      </tr>
+      <tr>
+        <td width="102"><span class="style3">Hospital ID </span></td>
+        <td width="196"><input name="ID" type="text" id="ID" value="<?php echo $ID; ?>"/></td>
+        <td width="161">
+          
+          <div align="left">
+            <input style="width:120px" name="add" type="submit" id="submit" value="Add Hospital" />
+          </div></td>
+      </tr>
+      <tr>
+        <td><span class="style3">Hospital Name </span></td>
+        <td><input name="name" type="text" id="name" value="<?php echo $name; ?>"/></td>
+        <td>
+          
+          <div align="left">
+            <input style="width:120px" name="search" type="submit" id="search" value="Search Hospital" />
+          </div></td>
+      </tr>
+      <tr>
+        <td><span class="style3">Telephone</span></td>
+        <td><input name="telephone" type="text" id="telephone" value="<?php echo $telephone; ?>" /></td>
+        <td>
+          
+          <div align="left">
+            <input style="width:120px" name="update" type="submit" id="update" value="Update Record" />
+          </div></td>
+      </tr>
+      <tr>
+        <td><span class="style3">Location</span></td>
+        <td><input name="location" type="text" id="location" value="<?php echo $location; ?>" /></td>
+        <td>
+          
+          <div align="left">
+		  
+            <input style="width:120px" name="del" type="button" id="del" value="Delete Record" onclick="location.href='/finaldonate/hospitals/confirmdelete.php'" /> 
+			
+          </div></td>
+      </tr>
+      <tr>
+        <td><span class="style3">Email</span></td>
+        <td><input name="email" type="text" id="email" /></td>
+        <td>
+        </tr>
+      <tr>
+      <tr>
+        <td colspan="3"> <div align="center">
+          <p class="style3">&nbsp;</p>
+          <p class="style3">&nbsp;</p>
+        </div></td>
+      </tr>
+    </table>
+    
+  </form>
+ <table width="330" border="1" align="center" style="margin-top:5px">
+      <tr>
+        <td><div align="center">
+          <input name="view" type="submit" id="view" value="View blood count" onClick="location.href='/finaldonate/blood/bloodcount.php'"/>
+        </div></td>
+      </tr>
+    </table>
+	
+	<!--second column-->
+	 </th>
     <th colspan="2" bgcolor="#FFFFFF" scope="col"><span class="style9">Menu</span></th>
   </tr>
   <tr>
-    <td width="150" bgcolor="#CC3366"><input  style="width:150px" name="update2" type="submit" id="update2" value="Update personal Details" onclick="location.href='/finaldonate/menu/adminupdate.php'"/>    </td>
+    <td width="179" bgcolor="#CC3366"><input  style="width:150px" name="update2" type="submit" id="update2" value="Update personal Details" onclick="location.href='/finaldonate/menu/adminupdate.php'"/>    </td>
     <td width="169" bgcolor="#CC3366"><input style="width:150px"  name="hospitals" type="submit" id="hospitals" value="Hospitals" onclick="location.href='/finaldonate/hospitals/hospitals.php'"/></td>
   </tr>
   <tr>
@@ -150,7 +244,7 @@ Password:<br/>
   </tr>
   <tr>
     <td bgcolor="#CC3366"><input style="width:150px" name="donorsapp" type="submit" id="donorsapp" value="Donors Appointments" onclick="location.href='/finaldonate/appointments/admindonors.php'"/></td>
-    <td bgcolor="#CC3366"><input style="width:150px" name="discard" type="submit" id="discard" value="Discard Blood" onclick="location.href='/finaldonatefinaldonate/blood/discardblood.php'"/></td>
+    <td bgcolor="#CC3366"><input style="width:150px" name="discard" type="submit" id="discard" value="Discard Blood" onclick="location.href='/finaldonate/blood/discardblood.php'"/></td>
   </tr>
   <tr>
     <td bgcolor="#CC3366">&nbsp;</td>
@@ -160,14 +254,9 @@ Password:<br/>
     <td colspan="4"><div align="center"></div></td>
   </tr>
 </table>
+  
+</div> <!-- END of templatemo_main -->
 
-
-
-<p><br/>
-  <br/>
-  <br/>
-  <br/>
-<!-- END of templatemo_main -->
 <div id="templatemo_bottom_wrapper">
     <div id="templatemo_bottom">
     	<div class="col one_third">
@@ -218,34 +307,51 @@ Password:<br/>
 </html>
 
 
-<?php
-	 
-  // get details
-   if (isset($_POST['update'])){
-   $idNumber = $_POST['idNumber'];
-  $firstname = $_POST['firstName'];
-  $lastname = $_POST['lastName'];
-  $email = $_POST['email'];
-  $mobile = $_POST['mobile'];
-  $password =$_POST['password'];
-  $userType="admin";
- //$password_hash=md5($password);
 
-  if(!empty($idNumber) && !empty($firstname) && !empty($lastname) && !empty($email) && !empty($mobile) && !empty($password)){
-	   if (filter_var($email, FILTER_VALIDATE_EMAIL)){	
-  
- $query= "UPDATE users SET firstname='$firstname',lastname='$lastname', email='$email', mobile='$mobile' WHERE idNumber='$idNumber' AND password='$password'";
+
+
+<?php 
+}
+         }
+	 else{echo 'Wrong hospital Identification'.  mysqli_error($con);} 
+   }
+   
+   else{echo 'Failed to select details from database'.  mysqli_error($con);}
+   }
+  else{echo 'Please insert hospital ID'.  mysqli_error($con);}
+     }
+	 
+	 
+  // update details
+   if (isset($_POST['update'])){
+   $ID = $_POST['ID'];
+  $name = $_POST['name'];
+  $telephone = $_POST['telephone'];
+  $location = $_POST['location'];
+    
+   if(!empty($ID) && !empty($name) && !empty($telephone) && !empty($location)){
+ $query= "UPDATE hospitals SET name='$name', mobileNo='$telephone', location='$location' WHERE hospitalID='$ID'";
 if ($query_run= mysqli_query($con,$query)){
 echo 'record sucessfully updated';
 }
-else{echo 'record not updated. Ensure that your idNumber number and password are correct';}
-}
-	    else{
-	   echo "invalid email address";
-	   }
+else{echo 'record not updated';}
+	   
 	   }
   else{echo 'All fields are required'.  mysqli_error($con);}
+
 }
 
+
+//delete record
+if (isset($_POST['delete'])){
+
+ $ID = $_POST['hospitalID'];
+ 
+ $query= "DELETE FROM hospitals WHERE hospitalID='$ID'";
+if ($query_run= mysqli_query($con,$query)){
+echo 'record sucessfully deleted';
+}
+else{echo 'An error occured..record not deleted';}
+}
   
 ?>

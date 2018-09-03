@@ -11,12 +11,37 @@ if (mysqli_connect_error()){
 die("connection failed:".mysqli_connect_error());
 }
 
+
+if (isset($_POST['search']))
+{
+$ID = $_POST['idNumber'];
+ $date = $_POST['date'];
+
+  
+  if(!empty($ID) && !empty($date)){
+  $query ="SELECT * FROM appointments WHERE (idNumber='$ID'AND date='$date') AND appointmentType='RECIPIENT'";
+  
+  if ($query_run= mysqli_query($con,$query)){
+  	
+        if(mysqli_num_rows($query_run)==1){
+   
+   echo 'yees';
+   while($row= $query_run->fetch_assoc()){
+  $ID = $row['idNumber'];
+ $mobile =$row['mobile'];
+  $location =$row['location'];
+  $hospital =$row['hospital'];
+  $blood =$row['blood'];
+  $date =$row['date'];
+  
+
 ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Donate Blood- Login Page</title>
+<title>Donate Blood- Appointments Page</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -66,12 +91,11 @@ ddsmoothmenu.init({
 
 <style type="text/css">
 <!--
-.style8 {
-	font-size: 14px;
-	color: #CC0000;
+.style3 {color: #000000}
+.style4 {color: #CC0000}
+.style2 {            width: 469px;
 }
-.style9 {color: #CC0000}
-.style10 {color: #000000}
+.style5 {}
 -->
 </style>
 </head>
@@ -80,60 +104,118 @@ ddsmoothmenu.init({
 
 <div id="templatemo_header_wrapper">
   <div id="site_title">
-	<a href="/finaldonatefinaldonate/index.html?lang=en&amp;style=style-default"
+	<a href="/finaldonate/index.html?lang=en&amp;style=style-default"
 							class="appbrand pull-left"><img src="/finaldonate/images/blood2.jpg" width="200" height="100"></a>
   </div>
       <div id="templatemo_menu" class="ddsmoothmenu">
-         <ul>
-      <li><a href="/finaldonate/menu/adminlogin.php" class="selected">Logout</a>
-                     </li>
+        <ul>
+            <li><a href="/finaldonate/index.html">Home</a></li>
+            <li><a href="/finaldonate/about.html" >About</a></li>
+			<li><a href="/finaldonate/services.html">Services</a></li>
+            <li><a href="/finaldonate/blog.html" >Blog</a></li>
+            <li><a href="/finaldonate/contact.html" >Contact Us</a></li>
+			<li><a href="/finaldonate/index.html" >Log Out</a>
+			                </li>
 
         </ul>
         <br style="clear: left" />
     </div> <!-- end of templatemo_menu -->
     <div class="cleaner"></div>
 </div>	<!-- END of templatemo_header_wrapper -->
-
+finaldonate
 <div id="templatemo_main">
- 
-  <br/></p>
-<div id="inputs" style="width:750px; height:340px; margin-left:100px; border:3px solid #a1a1a1">
-
-<table width="750px" height:400px; border="1" align="center" >
+<table width="712" height="373" border="1" align="center" height:400px; >
   <tr>
-    <th width="1" colspan="2" rowspan="7" scope="col">
-	<form id="form1" name="form1" method="post" action="/finaldonate/menu/adminlogincon.php">
+    <th colspan="2" rowspan="7" scope="col">
+<!--newtable inside big table -->
 
-<span class="style4">Personal Details</span><br/>
-ID number:<br/>      
-  <input name="idNumber" type="text" maxlength="8" id="idNumber" >
-  <br/>
-First name:<br/>    
-<input name="firstName" type="text" maxlength="20" id="firstname" >
-<br/>
-Last name:<br/> 
-<input name="lastName" type="text" maxlength="20" id="lastname" >
-<br/>
-Email address:<br/>
-<input name="email" type="text" maxlength="50" id="email" >
-<br/>
-Mobile:<br/>  
-<input name="mobile" type="text" maxlength="10" id="mobile" >
-<br/>
-Password:<br/>  
-<input name="password" type="password"  id="password" >
-<br/>
-<p></p><br/>
+  <form id="form1" name="form1" method="post" action="adminrecipientscon.php">
+    <label></label>
+    <p>
+      <label></label>
+    </p>
+    <table width="332" border="1" align="center">
+      <tr>
+        <th colspan="2" scope="col">Search or update appointments details using ID number and date.</th>
+      </tr>
+      <tr>
+        <td width="109"><span class="style3">ID number </span></td>
+        <td width="207"><p>
+          <input name="ID" maxlength="8" id="ID" value="<?php echo $ID; ?>">
+          </input>
+        </p>        </td>
+      </tr>
+	  	        <tr>
+        <td width="109"><span class="style3">Mobile </span></td>
+        <td width="207"><p>
+          <input name="mobile" maxlength="10" id="mobile" value="<?php echo $mobile; ?>">
+          </input>
+        </p>        </td>
+      </tr>
 
-<br/>
+      <tr>
+        <td><span class="style3">Location</span></td>
+        <td><p>
+          <select name="location" size="1" id="location" value="<?php echo $location; ?>">
+            <option>Nairobi</option>
+            <option>Kisumu</option>
+            <option>Kitale</option>
+            <option>Eldoret</option>
+          </select>
+        </p>        </td>
+      </tr>
+      <tr>
+        <td>Hospital</td>
+        <td><select name="hospital" size="1" id="hospital" value="<?php echo $hospital; ?>">
+		<option>101</option>
+            <option>102</option>
+            <option>103</option>
+            <option>104</option>
+                        </select></td>
+      </tr>
+     
+	   <tr>
+        <td>Blood Type</td>
+        <td><select name="blood" size="1" id="blood" value="<?php echo $blood; ?>">
+		<option>A+</option>
+            <option>A-</option>
+            <option>AB+</option>
+			<option>AB-</option>
+            <option>B+</option>
+			<option>B-</option>
+            <option>0+</option>
+            <option>O-</option>
+            
+                        </select></td>
+      </tr>
+	   <tr>
+        <td>Appointment Date </td>
+        <td><input name="date" type="date" id="date" value="<?php echo $date; ?>">
+                        </input></td>
+      </tr>
+	  	   <tr>
+        <td>New Appointment Date </td>
+        <td><input name="newdate" type="date" id="newdate" >
+                        </input></td>
+      </tr>
 
-<input name="update" type="submit" id="update" value="Update details"  onClick=""/>
-</form>
-</th>
+      <tr>
+        <td colspan="2">&nbsp;</td>
+      </tr>
+      <tr>
+        <td colspan="2"> <div align="center">
+          <input name="search" type="submit" id="search" value="search appointment" />
+		   <input name="update" type="submit" id="update" value="update appointment" />
+		          </div></td>
+      </tr>
+    </table>
+	 </form>
+	 <!--second column-->
+	 </th>
     <th colspan="2" bgcolor="#FFFFFF" scope="col"><span class="style9">Menu</span></th>
   </tr>
   <tr>
-    <td width="150" bgcolor="#CC3366"><input  style="width:150px" name="update2" type="submit" id="update2" value="Update personal Details" onclick="location.href='/finaldonate/menu/adminupdate.php'"/>    </td>
+    <td width="179" bgcolor="#CC3366"><input  style="width:150px" name="update2" type="submit" id="update2" value="Update personal Details" onclick="location.href='/finaldonate/menu/adminupdate.php'"/>    </td>
     <td width="169" bgcolor="#CC3366"><input style="width:150px"  name="hospitals" type="submit" id="hospitals" value="Hospitals" onclick="location.href='/finaldonate/hospitals/hospitals.php'"/></td>
   </tr>
   <tr>
@@ -150,7 +232,7 @@ Password:<br/>
   </tr>
   <tr>
     <td bgcolor="#CC3366"><input style="width:150px" name="donorsapp" type="submit" id="donorsapp" value="Donors Appointments" onclick="location.href='/finaldonate/appointments/admindonors.php'"/></td>
-    <td bgcolor="#CC3366"><input style="width:150px" name="discard" type="submit" id="discard" value="Discard Blood" onclick="location.href='/finaldonatefinaldonate/blood/discardblood.php'"/></td>
+    <td bgcolor="#CC3366"><input style="width:150px" name="discard" type="submit" id="discard" value="Discard Blood" onclick="location.href='/finaldonate/blood/discardblood.php'"/></td>
   </tr>
   <tr>
     <td bgcolor="#CC3366">&nbsp;</td>
@@ -161,13 +243,18 @@ Password:<br/>
   </tr>
 </table>
 
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <label></label>
+ 
+  
+   
+  <p>&nbsp;</p>
+ 
+</div> <!-- END of templatemo_main -->
 
 
-<p><br/>
-  <br/>
-  <br/>
-  <br/>
-<!-- END of templatemo_main -->
+
 <div id="templatemo_bottom_wrapper">
     <div id="templatemo_bottom">
     	<div class="col one_third">
@@ -217,35 +304,83 @@ Password:<br/>
 </body>
 </html>
 
-
-<?php
+<?php 
+}
+         }
+	 else{echo 'Wrong appointment details'.  mysqli_error($con);} 
+   }
+   
+   else{echo 'Failed to select details from database'.  mysqli_error($con);}
+   }
+  else{echo 'Please insert patient ID and appointment date'.  mysqli_error($con);}
+     }
 	 
-  // get details
+	 
+  // update details
    if (isset($_POST['update'])){
-   $idNumber = $_POST['idNumber'];
-  $firstname = $_POST['firstName'];
-  $lastname = $_POST['lastName'];
-  $email = $_POST['email'];
+   $ID = $_POST['ID'];
   $mobile = $_POST['mobile'];
-  $password =$_POST['password'];
-  $userType="admin";
- //$password_hash=md5($password);
-
-  if(!empty($idNumber) && !empty($firstname) && !empty($lastname) && !empty($email) && !empty($mobile) && !empty($password)){
-	   if (filter_var($email, FILTER_VALIDATE_EMAIL)){	
+  $location = $_POST['location'];
+  $hospital = $_POST['hospital'];
+  $blood = $_POST['blood'];
+  $date = $_POST['date'];
+  $newdate = $_POST['newdate'];
   
- $query= "UPDATE users SET firstname='$firstname',lastname='$lastname', email='$email', mobile='$mobile' WHERE idNumber='$idNumber' AND password='$password'";
+    
+   if(!empty($ID) && !empty($date) && !empty($mobile) && !empty($location) && !empty($hospital) && !empty($blood)){
+ $query= "UPDATE appointments SET ID='$ID', mobile='$mobile', location='$location' , hospital='$hospital', blood='$blood', date='$newdate' WHERE ID='$ID' AND date='$date'";
 if ($query_run= mysqli_query($con,$query)){
 echo 'record sucessfully updated';
 }
-else{echo 'record not updated. Ensure that your idNumber number and password are correct';}
+else{echo 'record not updated';}
 }
-	    else{
-	   echo "invalid email address";
-	   }
-	   }
-  else{echo 'All fields are required'.  mysqli_error($con);}
+else{echo 'All fields are required';}
 }
 
+//////full list 
+	 if (isset($_POST['all']))
+{
   
+  $query ="SELECT * FROM appointments WHERE appointmentType="RECIPIENT"";
+  
+ 
+
+
+  if ($query_run= mysqli_query($con,$query)){
+  	
+        if(mysqli_num_rows($query_run)>0){
+		  echo 
+      "<table border='1'>
+ <tr>
+  <th> idNumber</th>
+  <th> mobileNumber</th>
+  <th> location</th>
+  <th> hospital</th>
+  <th> bloodType</th>
+  <th> date</th>
+  </tr>";
+   
+   while($row= mysqli_fetch_assoc($query_run)){
+
+echo "<tr>";
+echo "<td>".$row['idNumber']."</td>";
+echo "<td>".$row['mobileNumber']."</td>";
+echo "<td>".$row['location']."</td>";
+echo "<td>".$row['hospitaID']."</td>";
+echo "<td>".$row['bloodType']."</td>";
+echo "<td>".$row['date']."</td>";
+echo "</tr>";
+
+}
+echo "</table>";
+         }
+	 else{echo 'No menu items'.  mysqli_error($con);} 
+   }
+   
+   else{echo 'Failed to select details from database'.  mysqli_error($con);}
+   
+        }
+
+
+
 ?>

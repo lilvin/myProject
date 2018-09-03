@@ -1,43 +1,8 @@
-<?php
-
-//connecting to database
-$servername="localhost";
-$username="root";
-$password="";
-$dbname="bloodbank";
-
-$con=new mysqli($servername,$username,$password,$dbname) or die("failed to connect to server");
-if (mysqli_connect_error()){
-die("connection failed:".mysqli_connect_error());
-}
-
-if (isset($_POST['login']))
-{
-$username = $_POST['username'];
-  $password =$_POST['password'];
-  //$password_hash=md5($password);
-  
-  if(!empty($username) && !empty($password)){
-  $query ="SELECT * FROM users WHERE (email='$username' AND password='$password') AND(userType LIKE'user')";
-  
-  if ($query_run= mysqli_query($con,$query)){
-  	
-        if(mysqli_num_rows($query_run)==1){
-   
-   echo 'yees';
-   while($row= $query_run->fetch_assoc()){
-  $idNumber = $row['idNumber'];
-$firstname = $row['firstName'];
-$lastname = $row['lastName'];
-$email = $row['email'];
-$mobile = $row['mobile'];
-
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Donate Blood- Login Page</title>
+<title>Donate Blood- Appointments Page</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -89,6 +54,9 @@ ddsmoothmenu.init({
 <!--
 .style3 {color: #000000}
 .style4 {color: #CC0000}
+.style2 {            width: 469px;
+}
+.style5 {}
 -->
 </style>
 </head>
@@ -108,7 +76,8 @@ ddsmoothmenu.init({
             <li><a href="/finaldonate/blog.html" >Blog</a></li>
             <li><a href="/finaldonate/contact.html" >Contact Us</a></li>
 			<li><a href="/finaldonate/index.html" >Log Out</a>
-          </li>
+			                </li>
+
         </ul>
         <br style="clear: left" />
     </div> <!-- end of templatemo_menu -->
@@ -116,77 +85,124 @@ ddsmoothmenu.init({
 </div>	<!-- END of templatemo_header_wrapper -->
 
 <div id="templatemo_main">
- 
-<div id="inputs" style="width:800px; height:300px; margin-left:100px; border:3px solid #a1a1a1">
-<table width="800" height:300px; border="2" align="center" >
+<table width="332" height:300px; border="1" align="center" >
   <tr>
     <th colspan="2" rowspan="7" scope="col">
 	<!-- begin table inside table-->
-	
-<form id="form1" name="form1" method="post" action="">
-<span class="style4">Personal Details</span><br/>
-ID number:<br/>      
-  <input name="idNumber" type="text" maxlength="8" id="idNumber" value="<?php echo $idNumber; ?>" disabled>
-  <br/>
-First name:<br/>    
-<input name="firstname" type="text" maxlength="20" id="firstname" value="<?php echo $firstname; ?>"disabled>
-<br/>
-Last name:<br/> 
-<input name="lastname" type="text" maxlength="20" id="lastname" value="<?php echo $lastname; ?>"disabled>
-<br/>
-Email address:<br/>
-<input name="email" type="text" maxlength="50" id="email" value="<?php echo $email; ?>"disabled>
-<br/>
-Mobile:<br/>  
-<input name="mobile" type="text" maxlength="10" id="mobile" value="<?php echo $mobile; ?>"disabled>
-<br/>
-<br/>
-</form>
-</th>
-</tr>
-<!--second column-->
-<tr>
-    <th colspan="2" bgcolor="#FFFFFF" scope="col"><span class="style9">Manage Account</span></th>
-    <th colspan="2" bgcolor="#FFFFFF" scope="col"><span class="style9">Recipient Menu </span></th>
-      <th colspan="2" bgcolor="#FFFFFF" scope="col"><span class="style9">Donor Menu</span></th>
+
+  <form id="form1" name="form1" method="post" action="recipientscon.php">
+    <label></label>
+    <p>
+      <label></label>
+    </p>
+    <table width="332" border="1" align="center">
+      <tr>
+        <th colspan="2" scope="col">Book an appointment to get blood transfusion. </th>
+      </tr>
+      <tr>
+        <td width="109"><span class="style3">ID number </span></td>
+        <td width="207"><p>
+          <input name="idNumber" maxlength="8" id="idNumber">
+          </input>
+        </p>        </td>
+      </tr>
+	  	        <tr>
+        <td width="109"><span class="style3">Mobile </span></td>
+        <td width="207"><p>
+          <input name="mobileNumber" maxlength="10" id="mobileNumber">
+          </input>
+        </p>        </td>
+      </tr>
+      <tr>
+        <td>Hospital ID</td>
+        <td><select name="hospital" size="1" id="hospital">
+            <option>101</option>
+            <option>102</option>
+            <option>103</option>
+            <option>104</option>
+                        </select></td>
+      </tr>
+
+      <tr>
+        <td><span class="style3">Location</span></td>
+        <td><p>
+          <select name="location" size="1" id="location">
+            <option>Nairobi</option>
+            <option>Kisumu</option>
+            <option>Kitale</option>
+            <option>Eldoret</option>
+          </select>
+        </p>        </td>
+      </tr>
+      
+     
+	   <tr>
+        <td>Blood Type</td>
+        <td><select name="blood" size="1" id="blood">
+		<option>A+</option>
+            <option>A-</option>
+            <option>AB+</option>
+			<option>AB-</option>
+            <option>B+</option>
+			<option>B-</option>
+            <option>0+</option>
+            <option>O-</option>
+            
+                        </select></td>
+      </tr>
+	   <tr>
+        <td>Appointment Date </td>
+        <td><input name="date" type="date" id="date">
+                        </input></td>
+      </tr>
+      <tr>
+        <td colspan="2">&nbsp;</td>
+      </tr>
+      <tr>
+        <td colspan="2"> <div align="center">
+          <input name="book" type="submit" id="book" value="Book appointment" />
+        </div></td>
+      </tr>
+    </table>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <label></label>
+  </form>
+  
+   <!--second column-->   </th>
+    <th colspan="2" bgcolor="#FFFFFF" scope="col"><span class="style9">Menu</span></th>
   </tr>
   <tr>
-    <td width="150" bgcolor="#CC3366"><input name="update" type="submit" id="update" value="Update details"  onclick="location.href='/finaldonate/menu/userupdate.php'"/></td>
-    <td bgcolor="#CC3366">&nbsp;</td>
-    <td bgcolor="#CC3366"><input name="appointment" type="submit" id="appointment" value="Book recipient appointment" onclick="location.href='/finaldonate/appointments/recipientsappointments.php'"/></td>
-    <td bgcolor="#CC3366">&nbsp;</td>
-    <td bgcolor="#CC3366"><input name="appointment" type="submit" id="appointment" value="Book donor appointment" onclick="location.href='/finaldonate/appointments/donorsappointments.php'"/></td>
-    <td bgcolor="#CC3366">&nbsp;</td>
-
-    
+    <td width="143" bgcolor="#CC3366"><input name="update" type="submit" id="update" value="Update details"  onclick="location.href='/finaldonate/menu/userupdate.php'"/></td>
+    <td width="1" bgcolor="#CC3366">&nbsp;</td>
+  </tr>
   <tr>
     <td bgcolor="#CC3366"><input name="password" type="submit" id="password" value="Change Password" onclick="location.href='/finaldonate/password/userpassword.php'"/></td>
     <td bgcolor="#CC3366">&nbsp;</td>
-    <td bgcolor="#CC3366"><input name="cancel" type="submit" id="cancel" value="Cancel reciepient appointment" onclick="location.href='/donateblood/appointments/recipientscancel.php'"/></td>
-    <td bgcolor="#CC3366">&nbsp;</td>
-    <td bgcolor="#CC3366"><input name="cancel" type="submit" id="cancel" value="Cancel donor appointment" onclick="location.href='/donateblood/appointments/donorscancel.php'"/></td>
-    <td bgcolor="#CC3366">&nbsp;</td>
-    
-     
-     
   </tr>
   <tr>
-   <td bgcolor="#CC3366"><input name="hospital" type="submit" id="hospital" value="Search for hospital" onclick="location.href='/finaldonate/hospitals/searchhospital.php'"/></td>
+    <td bgcolor="#CC3366"><input name="hospital2" type="submit" id="hospital2" value="Search for hospital" onclick="location.href='/finaldonate/hospitals/searchhospital.php'"/></td>
     <td bgcolor="#CC3366">&nbsp;</td>
-  
-     
   </tr>
+  <tr>
+    <td bgcolor="#CC3366"><input name="appointment" type="submit" id="appointment" value="Book appointment" onclick="location.href='/finaldonate/appointments/recipientsappointments.php'"/></td>
+    <td bgcolor="#CC3366">&nbsp;</td>
   </tr>
-  <br/>
-  </br>
+  <tr>
+    <td bgcolor="#CC3366"><input name="cancel" type="submit" id="cancel" value="Cancel appointment" onclick="location.href='/finaldonate/appointments/recipientscancel.php'"/></td>
+    <td bgcolor="#CC3366">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CC3366">&nbsp;</td>
+    <td bgcolor="#CC3366">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="4"><div align="center"></div></td>
+  </tr>
 </table>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+  <p>&nbsp;</p>
+ 
 
-<div>
 </div> <!-- END of templatemo_main -->
 
 
@@ -196,7 +212,7 @@ Mobile:<br/>
     	<div class="col one_third">
         	<h4><span></span>Our Services</h4>
             <div class="bottom_box">
-                <ul class="footer_list">
+                <ul class="footer_list">finaldonate
                     <li><a href="/finaldonate/services.html">Appointments booking</a></li>
                     <li><a href="/finaldonate/services.html">Blood donation services</a></li>
                     <li><a href="/finaldonate/services.html">Blood transfusion services</a></li>
@@ -208,7 +224,7 @@ Mobile:<br/>
         <div class="col one_third">
         	<h4><span></span>Contact us</h4>
             <div class="bottom_box">
-			 <p><em> Contact us using the social links. Find contact detailsfor specific hospitals in our <a href="/finaldonate/contact.html">Contact Us</a> page. </em></p><br />
+			 <p><em> Contact us using the social links. Find contact detailsfor specific hospitals in our <a href="/donateblood/contact.html">Contact Us</a> page. </em></p><br />
                 <div class="footer_social_button">
                     <a href="#"><img src="/finaldonate/images/facebook.png" title="facebook" alt="facebook" /></a>
                     <a href="#"><img src="/finaldonate/images/flickr.png" title="flickr" alt="flickr" /></a>
@@ -240,54 +256,3 @@ Mobile:<br/>
 </body>
 </html>
 
-
-<?php
-}
-         }
-	 else{echo 'Wrong username/password combination'.  mysqli_error($con);} 
-   }
-   
-   else{echo 'Failed to select details from database'.  mysqli_error($con);}
-   }
-  else{echo 'Please insert a username and password'.  mysqli_error($con);}
-     }
-	 
-	 
-  // update details
-   if (isset($_POST['update'])){
-   $idNumber = $_POST['idNumber'];
-  $firstname = $_POST['firstname'];
-  $lastname = $_POST['lastname'];
-  $email = $_POST['email'];
-  $mobile = $_POST['mobile'];
-  $password = $_POST['password'];
-  //$password_hash=md5($password);
-  
-   if(!empty($idNumber) && !empty($firstname) && !empty($lastname) && !empty($email) && !empty($mobile) && !empty($password)){
-	   if (filter_var($email, FILTER_VALIDATE_EMAIL)){
-	   $query ="SELECT * FROM users WHERE (idNumber='$idNumber' AND password='$password')";
-  
-  if ($query_run= mysqli_query($con,$query)){
-  	
-        if(mysqli_num_rows($query_run)==1){
-  
- $query= "UPDATE users SET firstName='$firstname',lastName='$lastname', email='$email', mobile='$mobile' WHERE idNumber='$idNumber' AND password='$password'";
-if ($query_run= mysqli_query($con,$query)){
-echo 'record sucessfully updated';
-}
-else{echo 'record not updated. Ensure that your ID number and password are correct';}
- }
-	 else{echo 'Wrong ID number/password combination'.  mysqli_error($con);} 
-   }
-   
-   else{echo 'Failed to select details from database'.  mysqli_error($con);}
-}
-	    else{
-	   echo "invalid email address";
-	   }
-	   }
-  else{echo 'All fields are required'.  mysqli_error($con);}
-}
-
-  
-?>

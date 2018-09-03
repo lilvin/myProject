@@ -1,43 +1,9 @@
-<?php
 
-//connecting to database
-$servername="localhost";
-$username="root";
-$password="";
-$dbname="bloodbank";
-
-$con=new mysqli($servername,$username,$password,$dbname) or die("failed to connect to server");
-if (mysqli_connect_error()){
-die("connection failed:".mysqli_connect_error());
-}
-
-if (isset($_POST['login']))
-{
-$username = $_POST['username'];
-  $password =$_POST['password'];
-  //$password_hash=md5($password);
-  
-  if(!empty($username) && !empty($password)){
-  $query ="SELECT * FROM users WHERE (email='$username' AND password='$password') AND(userType LIKE'user')";
-  
-  if ($query_run= mysqli_query($con,$query)){
-  	
-        if(mysqli_num_rows($query_run)==1){
-   
-   echo 'yees';
-   while($row= $query_run->fetch_assoc()){
-  $idNumber = $row['idNumber'];
-$firstname = $row['firstName'];
-$lastname = $row['lastName'];
-$email = $row['email'];
-$mobile = $row['mobile'];
-
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Donate Blood- Login Page</title>
+<title>Donate Blood- Change Password</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -64,7 +30,6 @@ http://www.templatemo.com/preview/templatemo_358_carousel
 
 <script type="text/javascript" src="/finaldonate/js/jquery.min.js"></script>
 <script type="text/javascript" src="/finaldonate/js/ddsmoothmenu.js">
-
 /***********************************************
 * Smooth Navigational Menu- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
 * This notice MUST stay intact for legal use
@@ -87,8 +52,7 @@ ddsmoothmenu.init({
 
 <style type="text/css">
 <!--
-.style3 {color: #000000}
-.style4 {color: #CC0000}
+.style10 {color: #000000}
 -->
 </style>
 </head>
@@ -107,8 +71,9 @@ ddsmoothmenu.init({
 			<li><a href="/finaldonate/services.html">Services</a></li>
             <li><a href="/finaldonate/blog.html" >Blog</a></li>
             <li><a href="/finaldonate/contact.html" >Contact Us</a></li>
-			<li><a href="/finaldonate/index.html" >Log Out</a>
-          </li>
+			<li><a href="/finaldonate/index.html" >Login</a>
+			                </li>
+
         </ul>
         <br style="clear: left" />
     </div> <!-- end of templatemo_menu -->
@@ -116,77 +81,45 @@ ddsmoothmenu.init({
 </div>	<!-- END of templatemo_header_wrapper -->
 
 <div id="templatemo_main">
- 
-<div id="inputs" style="width:800px; height:300px; margin-left:100px; border:3px solid #a1a1a1">
-<table width="800" height:300px; border="2" align="center" >
-  <tr>
-    <th colspan="2" rowspan="7" scope="col">
-	<!-- begin table inside table-->
-	
-<form id="form1" name="form1" method="post" action="">
-<span class="style4">Personal Details</span><br/>
-ID number:<br/>      
-  <input name="idNumber" type="text" maxlength="8" id="idNumber" value="<?php echo $idNumber; ?>" disabled>
-  <br/>
-First name:<br/>    
-<input name="firstname" type="text" maxlength="20" id="firstname" value="<?php echo $firstname; ?>"disabled>
-<br/>
-Last name:<br/> 
-<input name="lastname" type="text" maxlength="20" id="lastname" value="<?php echo $lastname; ?>"disabled>
-<br/>
-Email address:<br/>
-<input name="email" type="text" maxlength="50" id="email" value="<?php echo $email; ?>"disabled>
-<br/>
-Mobile:<br/>  
-<input name="mobile" type="text" maxlength="10" id="mobile" value="<?php echo $mobile; ?>"disabled>
-<br/>
-<br/>
-</form>
-</th>
-</tr>
-<!--second column-->
-<tr>
-    <th colspan="2" bgcolor="#FFFFFF" scope="col"><span class="style9">Manage Account</span></th>
-    <th colspan="2" bgcolor="#FFFFFF" scope="col"><span class="style9">Recipient Menu </span></th>
-      <th colspan="2" bgcolor="#FFFFFF" scope="col"><span class="style9">Donor Menu</span></th>
-  </tr>
-  <tr>
-    <td width="150" bgcolor="#CC3366"><input name="update" type="submit" id="update" value="Update details"  onclick="location.href='/finaldonate/menu/userupdate.php'"/></td>
-    <td bgcolor="#CC3366">&nbsp;</td>
-    <td bgcolor="#CC3366"><input name="appointment" type="submit" id="appointment" value="Book recipient appointment" onclick="location.href='/finaldonate/appointments/recipientsappointments.php'"/></td>
-    <td bgcolor="#CC3366">&nbsp;</td>
-    <td bgcolor="#CC3366"><input name="appointment" type="submit" id="appointment" value="Book donor appointment" onclick="location.href='/finaldonate/appointments/donorsappointments.php'"/></td>
-    <td bgcolor="#CC3366">&nbsp;</td>
+ <form id="form1" name="form1" method="post" action="">
 
-    
-  <tr>
-    <td bgcolor="#CC3366"><input name="password" type="submit" id="password" value="Change Password" onclick="location.href='/finaldonate/password/userpassword.php'"/></td>
-    <td bgcolor="#CC3366">&nbsp;</td>
-    <td bgcolor="#CC3366"><input name="cancel" type="submit" id="cancel" value="Cancel reciepient appointment" onclick="location.href='/donateblood/appointments/recipientscancel.php'"/></td>
-    <td bgcolor="#CC3366">&nbsp;</td>
-    <td bgcolor="#CC3366"><input name="cancel" type="submit" id="cancel" value="Cancel donor appointment" onclick="location.href='/donateblood/appointments/donorscancel.php'"/></td>
-    <td bgcolor="#CC3366">&nbsp;</td>
-    
-     
-     
-  </tr>
-  <tr>
-   <td bgcolor="#CC3366"><input name="hospital" type="submit" id="hospital" value="Search for hospital" onclick="location.href='/finaldonate/hospitals/searchhospital.php'"/></td>
-    <td bgcolor="#CC3366">&nbsp;</td>
   
-     
-  </tr>
-  </tr>
+  
+ 
+  <br/></p>
+  <p><br/>
   <br/>
-  </br>
-</table>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-<div>
+  <table width="332" border="1" align="center">
+    <tr>
+      <th colspan="2" scope="col"><span class="style10">Change password </span></th>
+    </tr>
+    <tr>
+      <td width="106"><span class="style10">Username</span></td>
+      <td width="210"><p><span class="style10">Your username </span> </p>
+          <p>
+            <input name="username" type="text" id="username" />
+        </p></td>
+    </tr>
+    <tr>
+      <td><span class="style10">New Password </span></td>
+      <td> <p class="style10">Enter new password </p>
+        <p>
+        <input name="newpassword" type="password" id="newpassword" />
+      </p></td>
+    </tr>
+    <tr>
+      <td colspan="2"><div align="center">
+          <input name="change" type="submit" id="change" value="Change Password" />
+      </div></td>
+    </tr>
+  </table>
+  <p><br/>
+      <br/>
+  <div>
+  
+  
+</p>
+ </form>
 </div> <!-- END of templatemo_main -->
 
 
@@ -240,8 +173,45 @@ Mobile:<br/>
 </body>
 </html>
 
-
 <?php
+
+//connecting to database
+$servername="localhost";
+$username="root";
+$password="";
+$dbname="bloodbank";
+
+$con=new mysqli($servername,$username,$password,$dbname) or die("failed to connect to server");
+if (mysqli_connect_error()){
+die("connection failed:".mysqli_connect_error());
+}
+
+if (isset($_POST['change']))
+{
+$username = $_POST['username'];
+  $newpassword =$_POST['newpassword'];
+   //$newpassword_hash=md5($newpassword);
+  
+  if(!empty($username) && !empty($newpassword)){
+  
+  $query ="SELECT * FROM users WHERE (email='$username') and (userType='user')";
+
+  if ($query_run= mysqli_query($con,$query)){
+  	
+        if(mysqli_num_rows($query_run)==1){
+   
+   echo 'yees';
+   while($row= $query_run->fetch_assoc()){
+  $dusername = $row['email'];
+if ($username==$dusername){
+
+ $query= "UPDATE users SET password='$newpassword' WHERE (email='$username') AND (userType='user')";
+if ($query_run= mysqli_query($con,$query)){
+echo 'New password set';
+}
+else{echo 'record not updated';}
+}
+else{echo 'The entered username/password do not match records';}
 }
          }
 	 else{echo 'Wrong username/password combination'.  mysqli_error($con);} 
@@ -253,41 +223,12 @@ Mobile:<br/>
      }
 	 
 	 
-  // update details
-   if (isset($_POST['update'])){
-   $idNumber = $_POST['idNumber'];
-  $firstname = $_POST['firstname'];
-  $lastname = $_POST['lastname'];
-  $email = $_POST['email'];
-  $mobile = $_POST['mobile'];
-  $password = $_POST['password'];
-  //$password_hash=md5($password);
+  // get details
   
-   if(!empty($idNumber) && !empty($firstname) && !empty($lastname) && !empty($email) && !empty($mobile) && !empty($password)){
-	   if (filter_var($email, FILTER_VALIDATE_EMAIL)){
-	   $query ="SELECT * FROM users WHERE (idNumber='$idNumber' AND password='$password')";
   
-  if ($query_run= mysqli_query($con,$query)){
-  	
-        if(mysqli_num_rows($query_run)==1){
   
- $query= "UPDATE users SET firstName='$firstname',lastName='$lastname', email='$email', mobile='$mobile' WHERE idNumber='$idNumber' AND password='$password'";
-if ($query_run= mysqli_query($con,$query)){
-echo 'record sucessfully updated';
-}
-else{echo 'record not updated. Ensure that your ID number and password are correct';}
- }
-	 else{echo 'Wrong ID number/password combination'.  mysqli_error($con);} 
-   }
-   
-   else{echo 'Failed to select details from database'.  mysqli_error($con);}
-}
-	    else{
-	   echo "invalid email address";
-	   }
-	   }
-  else{echo 'All fields are required'.  mysqli_error($con);}
-}
+
+
 
   
 ?>
