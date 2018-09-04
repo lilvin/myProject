@@ -87,33 +87,32 @@ ddsmoothmenu.init({
     <p>
       <label></label>
     </p>
-    <table width="332" border="1" align="center">
+    <table width="700" height="500" border="1" align="center">
       <tr>
         <th colspan="2" scope="col">Create an account </th>
       </tr>
       <tr>
-        <td>First Name </td>
+        <td><b>First Name</b> </td>
         <td><input name="firstName" maxlength="20" type="text" id="firstName" /></td>
       </tr>
       <tr>
-        <td>Last Name </td>
+        <td><b>Last Name</b> </td>
         <td><input name="lastName" maxlength="20" type="text" id="lastName" /></td>
       </tr>
       <tr>
-        <td width="112">ID number </td>
+        <td width="112"><b>ID number</b> </td>
         <td width="204"><input name="idNumber" maxlength="8" type="text" id="idNumber" /></td>
       </tr>
       <tr>
-        <td>Email Address </td>
+        <td><b>Email Address</b> </td>
         <td><input name="email" maxlength="50" type="text" id="email" /></td>
       </tr>
       <tr>
-        <td>Mobile </td>
+        <td><b>Mobile </b> </td>
         <td><input name="mobile" maxlength="10" type="text" id="mobile" /></td>
       </tr>
-      <tr>
         <tr>
-        <td>Password</td>
+        <td><b>Password</b></td>
         <td><input name="password" type="password" id="password" /></td>
       </tr>
       <tr>
