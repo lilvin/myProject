@@ -155,6 +155,11 @@ ddsmoothmenu.init({
         <td><input name="date" type="date" id="date">
                         </input></td>
       </tr>
+       <tr>
+        <td>Appointment time </td>
+        <td><input name="time" type="time" id="time">
+                        </input></td>
+      </tr>
       <tr>
         <td colspan="2">&nbsp;</td>
       </tr>

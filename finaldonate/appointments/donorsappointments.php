@@ -92,10 +92,7 @@ ddsmoothmenu.init({
     <th colspan="2" rowspan="7" scope="col">
 	<!-- begin table inside table-->
   <form id="form1" name="form1" method="post" action="donorsappcon.php">
-    <label></label>
-    <p>
-      <label></label>
-    </p>
+    
     <table width="332" border="1" align="center">
       <tr>
         <th colspan="2" scope="col">Book an appointment to doante blood </th>
@@ -153,6 +150,11 @@ ddsmoothmenu.init({
       <tr>
         <td>Appointment date </td>
         <td><input name="date" type="date" id="date">
+                        </input></td>
+      </tr>
+      <tr>
+        <td>Appointment time </td>
+        <td><input name="time" type="time" id="time">
                         </input></td>
       </tr>
       <tr>

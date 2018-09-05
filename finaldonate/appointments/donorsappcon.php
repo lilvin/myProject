@@ -20,10 +20,11 @@ die("connection failed:".mysqli_connect_error());
   $blood=$_POST['blood'];
    $hospital = $_POST['hospital'];
     $date = $_POST['date'];
+    $time=$_POST['time'];
     $appointmentType="DONOR";
 	  if(!empty($ID)&& !empty($mobile)  && !empty($location) && !empty($hospital) && !empty($date)){
 	   
-	   $sql = "INSERT INTO appointments(idNumber,mobileNumber,hospitaID,location,bloodType,date,appointmentType) VALUES ('$ID','$mobile','$hospital','$location','$blood','$date','$appointmentType')";
+	   $sql = "INSERT INTO appointments(idNumber,mobileNumber,hospitaID,location,bloodType,date,time,appointmentType) VALUES ('$ID','$mobile','$hospital','$location','$blood','$date','$time','$appointmentType')";
 	   
 	   if($con->query($sql)===TRUE)
 	   {
@@ -72,6 +73,6 @@ else{echo 'An error occured..record not deleted';}
    
    else{echo 'Failed to select details from database'.  mysqli_error($con);}
    }
-  else{echo 'Please insert your ID number and password'.  mysqli_error($con);}
+  // else{echo 'Please insert your ID number and password'.  mysqli_error($con);}
 ?>
 

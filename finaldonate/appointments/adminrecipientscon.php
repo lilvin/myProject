@@ -14,7 +14,7 @@ die("connection failed:".mysqli_connect_error());
 
 if (isset($_POST['search']))
 {
-$ID = $_POST['idNumber'];
+$ID = $_POST['ID'];
  $date = $_POST['date'];
 
   
@@ -28,12 +28,12 @@ $ID = $_POST['idNumber'];
    echo 'yees';
    while($row= $query_run->fetch_assoc()){
   $ID = $row['idNumber'];
- $mobile =$row['mobile'];
+ $mobile =$row['mobileNumber'];
   $location =$row['location'];
-  $hospital =$row['hospital'];
-  $blood =$row['blood'];
+  $hospital =$row['hospitaID'];
+  $blood =$row['bloodType'];
   $date =$row['date'];
-  
+  $time=$row['time'];
 
 ?>
 
@@ -193,6 +193,11 @@ finaldonate
         <td><input name="date" type="date" id="date" value="<?php echo $date; ?>">
                         </input></td>
       </tr>
+      <tr>
+        <td>Appointment time </td>
+        <td><input name="date" type="time" id="time" value="<?php echo $time; ?>">
+                        </input></td>
+      </tr>
 	  	   <tr>
         <td>New Appointment Date </td>
         <td><input name="newdate" type="date" id="newdate" >
@@ -324,11 +329,12 @@ finaldonate
   $hospital = $_POST['hospital'];
   $blood = $_POST['blood'];
   $date = $_POST['date'];
+  $time=$_POST['time'];
   $newdate = $_POST['newdate'];
   
     
    if(!empty($ID) && !empty($date) && !empty($mobile) && !empty($location) && !empty($hospital) && !empty($blood)){
- $query= "UPDATE appointments SET ID='$ID', mobile='$mobile', location='$location' , hospital='$hospital', blood='$blood', date='$newdate' WHERE ID='$ID' AND date='$date'";
+ $query= "UPDATE appointments SET ID='$ID', mobile='$mobile', location='$location' , hospital='$hospital', blood='$blood', date='$newdate',time='$time'  WHERE ID='$ID' AND date='$date'";
 if ($query_run= mysqli_query($con,$query)){
 echo 'record sucessfully updated';
 }
@@ -341,7 +347,7 @@ else{echo 'All fields are required';}
 	 if (isset($_POST['all']))
 {
   
-  $query ="SELECT * FROM appointments WHERE appointmentType="RECIPIENT"";
+  $query ="SELECT * FROM appointments WHERE appointmentType='RECIPIENT'";
   
  
 
@@ -358,6 +364,7 @@ else{echo 'All fields are required';}
   <th> hospital</th>
   <th> bloodType</th>
   <th> date</th>
+  <th> Time</th>
   </tr>";
    
    while($row= mysqli_fetch_assoc($query_run)){
@@ -369,6 +376,7 @@ echo "<td>".$row['location']."</td>";
 echo "<td>".$row['hospitaID']."</td>";
 echo "<td>".$row['bloodType']."</td>";
 echo "<td>".$row['date']."</td>";
+echo "<td>".$row['time']."</td>";
 echo "</tr>";
 
 }

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Donate Blood- Appointments Page</title>
+<title>Donate Blood- Donated Blood</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -85,47 +85,38 @@ ddsmoothmenu.init({
 </div>	<!-- END of templatemo_header_wrapper -->
 
 <div id="templatemo_main">
-<table width="750" height="373" border="1" align="center" height:400px; >
+<table width="709" height="373" border="1" align="center" height:400px; >
   <tr>
     <th colspan="2" rowspan="7" scope="col">
 <!--newtable inside big table -->
-  <form id="form1" name="form1" method="post" action="admindonorscon.php">
+
+  <form id="form1" name="form1" method="post" action="donatedbloodcon.php">
     <label></label>
     <p>
       <label></label>
     </p>
-	    <table width="377" border="1" align="center">
+    <table width="332" border="1" align="center">
       <tr>
-        <th colspan="2" scope="col">Search or update appointments details using ID number and date.</th>
+        <th colspan="2" scope="col">Perform operations on specific details for donated blood. Use blood serial number to search and alter existing records.</th>
       </tr>
       <tr>
-        <td width="117"><span class="style3">ID number </span></td>
-        <td width="244"><p>
-          <input name="ID" maxlength="8" id="ID">
+        <td width="109"><span class="style3">Blood Serial number </span></td>
+        <td width="207"><p>
+          <input name="serial" id="serial">
           </input>
         </p>        </td>
       </tr>
 	  	        <tr>
-        <td width="117"><span class="style3">Mobile </span></td>
-        <td width="244"><p>
-          <input name="mobile" maxlength="10" id="mobile">
+        <td width="109"><span class="style3">Donation Date </span></td>
+        <td width="207"><p>
+          <input name="ddate" type="date" id="ddate">
           </input>
         </p>        </td>
       </tr>
 
+     
       <tr>
-        <td><span class="style3">Location</span></td>
-        <td><p>
-          <select name="location" size="1" id="location">
-            <option>Nairobi</option>
-            <option>Kisumu</option>
-            <option>Kitale</option>
-            <option>Eldoret</option>
-          </select>
-        </p>        </td>
-      </tr>
-      <tr>
-        <td>Hospital</td>
+        <td><span class="style3">Hospital</span></td>
         <td><select name="hospital" size="1" id="hospital">
 		<option>101</option>
             <option>102</option>
@@ -133,25 +124,13 @@ ddsmoothmenu.init({
             <option>104</option>
                         </select></td>
       </tr>
-     
-	   
-	   <tr>
-        <td>Appointment Date </td>
-        <td><input name="date" type="date" id="date">
-                        </input></td>
-      </tr>
-        <tr>
-        <td><span class="style3">Appointment time </span></td>
-        <td><input name="time" type="time" id="time">
-                        </input></td>
-      </tr>
       <tr>
         <td colspan="2">&nbsp;</td>
       </tr>
      <tr>
         <td colspan="2"> <div align="center">
-          <input name="search" type="submit" id="search" value="search appointment" />
-		  <input name="all" type="submit" id="all" value="list of all donors appointments" />
+          <input name="add" type="submit" id="add" value="Add Record" /></br></br>
+		  <input name="search" type="submit" id="search" value="search Blood Details" />
 		          </div></td>
       </tr>
     </table>
@@ -217,7 +196,7 @@ ddsmoothmenu.init({
         <div class="col one_third">
         	<h4><span></span>Contact us</h4>
             <div class="bottom_box">
-			 <p><em> Contact us using the social links. Find contact details for specific hospitals in our <a href="/finaldonate/contact.html">Contact Us</a> page. </em></p><br />
+			 <p><em> Contact us using the social links. Find contact detailsfor specific hospitals in our <a href="/finaldonate/contact.html">Contact Us</a> page. </em></p><br />
                 <div class="footer_social_button">
                     <a href="#"><img src="/finaldonate/images/facebook.png" title="facebook" alt="facebook" /></a>
                     <a href="#"><img src="/finaldonate/images/flickr.png" title="flickr" alt="flickr" /></a>

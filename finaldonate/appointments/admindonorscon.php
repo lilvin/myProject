@@ -32,6 +32,7 @@ $ID = $_POST['ID'];
   $location =$row['location'];
   $hospital =$row['hospitaID'];
   $date =$row['date'];
+  $time=$row['time'];
   
 
 ?>
@@ -172,7 +173,11 @@ ddsmoothmenu.init({
             <option>104</option>
                         </select></td>
       </tr>
-     
+      <tr>
+        <td><span class="style3">Appointment time </span></td>
+        <td><input name="time" type="time" id="time" value="<?php echo $time; ?>>
+                        </input></td>
+      </tr>
 	  
 	   <tr>
         <td>Appointment Date </td>
@@ -309,12 +314,13 @@ ddsmoothmenu.init({
   $mobile = $_POST['mobile'];
   $location = $_POST['location'];
   $hospital = $_POST['hospital'];
+  $time=$_POST['time'];
     $date = $_POST['date'];
   $newdate = $_POST['newdate'];
   
     
    if(!empty($ID) && !empty($date) && !empty($mobile) && !empty($location) && !empty($hospital)){
- $query= "UPDATE appointments SET idNumber='$ID', mobileNumber='$mobile', location='$location' , hospitaID='$hospital', date='$newdate' WHERE idNumber='$ID' AND date='$date'";
+ $query= "UPDATE appointments SET idNumber='$ID', mobileNumber='$mobile', location='$location' , hospitaID='$hospital',time='$time',date='$newdate' WHERE idNumber='$ID' AND date='$date'";
 if ($query_run= mysqli_query($con,$query)){
 echo 'record sucessfully updated';
 }
@@ -342,6 +348,7 @@ else{echo 'All fields are required';}
   <th> location</th>
   <th> hospital</th>
   <th> date</th>
+   <th> time</th>
   </tr>";
    
    while($row= mysqli_fetch_assoc($query_run)){
@@ -352,6 +359,7 @@ echo "<td>".$row['mobileNumber']."</td>";
 echo "<td>".$row['location']."</td>";
 echo "<td>".$row['hospitaID']."</td>";
 echo "<td>".$row['date']."</td>";
+echo "<td>".$row['time']."</td>";
 echo "</tr>";
 
 }

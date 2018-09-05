@@ -126,7 +126,7 @@ ddsmoothmenu.init({
         </p>        </td>
       </tr>
       <tr>
-        <td>Hospital</td>
+        <td><span class="style3">Hospital</span></td>
         <td><select name="hospital" size="1" id="hospital">
 		<option>101</option>
             <option>102</option>
@@ -136,7 +136,7 @@ ddsmoothmenu.init({
       </tr>
      
 	   <tr>
-        <td>Blood Type</td>
+        <td><span class="style3">Blood Type</span></td>
         <td><select name="blood" size="1" id="blood">
 		<option>A+</option>
             <option>A-</option>
@@ -150,8 +150,13 @@ ddsmoothmenu.init({
                         </select></td>
       </tr>
 	   <tr>
-        <td>Appointment Date </td>
+        <td><span class="style3">Appointment Date </span></td>
         <td><input name="date" type="date" id="date">
+                        </input></td>
+      </tr>
+        <tr>
+        <td><span class="style3">Appointment time </span></td>
+        <td><input name="time" type="time" id="time">
                         </input></td>
       </tr>
       <tr>

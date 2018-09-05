@@ -324,7 +324,7 @@ ddsmoothmenu.init({
 	 
   // update details
    if (isset($_POST['update'])){
-   $ID = $_POST['ID'];
+   $ID = $_POST['hospitalID'];
   $name = $_POST['name'];
   $telephone = $_POST['telephone'];
   $location = $_POST['location'];
