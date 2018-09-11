@@ -1,15 +1,13 @@
 <?php
-    $name = $_POST['name'];
+    $author = $_POST['author'];
     $email = $_POST['email'];
-    $message = $_POST['message'];
+    $text = $_POST['text'];
     $from = 'From: www.finaldonate.com'; 
     $to = 'liliankirito@gmail.com';
     $subject = 'Email Inquiry';
 
-    $body = "From: $name\n E-Mail: $email\n Message:\n $message";
-?>
+    $body = "From: $author\n E-Mail: $email\n Message:\n $text";
 
-<?php
 if ($_POST['submit']) {
     if (mail ($to, $subject, $body, $from)) { 
         echo '<p>Thank you for your email!</p>';

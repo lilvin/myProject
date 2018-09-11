@@ -43,9 +43,7 @@ die("connection failed:".$con->connect_error);
 				   echo"registration failed.";
 				   }
 				   else{
-				  echo '<script language="javascript">';
-                   echo 'alert("registration successful.login to proceed")';
-                    echo '</script>';
+				   echo "registration successful.login to proceed";
 				   }
 
 		}

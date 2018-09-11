@@ -144,7 +144,7 @@ ddsmoothmenu.init({
       <input name="firstName"  maxlength="20" type="text" id="firstName" value="<?php echo $firstName; ?>" disabled/>
       </p>        </td>
 	  
-    <td bgcolor="#CC3366"><input  style="width:150px" name="password" type="submit" id="password" value="Change Password" onclick="location.href='/finaldonate/password/adminpassword.php'"/></td>
+    <td width="150" bgcolor="#CC3366"><input  style="width:150px" name="password" type="submit" id="password" value="Change Password" onclick="location.href='/finaldonate/password/adminpassword.php'"/></td>
     <td bgcolor="#CC3366"><input style="width:150px" name="types" type="submit" id="types" value="Blood Counts" onclick="location.href='/finaldonate/blood/bloodtypes.php'"/></td>
   </tr>
   <tr>

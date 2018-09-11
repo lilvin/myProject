@@ -87,38 +87,42 @@ ddsmoothmenu.init({
     <p>
       <label></label>
     </p>
-    <table width="700" height="500" border="1" align="center">
+    <table width="332" border="1" align="center">
       <tr>
         <th colspan="2" scope="col">Create an account </th>
       </tr>
       <tr>
-        <td><b>First Name</b> </td>
+        <td>First Name </td>
         <td><input name="firstName" maxlength="20" type="text" id="firstName" /></td>
       </tr>
       <tr>
-        <td><b>Last Name</b> </td>
+        <td>Last Name </td>
         <td><input name="lastName" maxlength="20" type="text" id="lastName" /></td>
       </tr>
       <tr>
-        <td width="112"><b>ID number</b> </td>
+        <td width="112">ID number </td>
         <td width="204"><input name="idNumber" maxlength="8" type="text" id="idNumber" /></td>
       </tr>
       <tr>
-        <td><b>Email Address</b> </td>
+        <td>Email Address </td>
         <td><input name="email" maxlength="50" type="text" id="email" /></td>
       </tr>
       <tr>
-        <td><b>Mobile </b> </td>
+        <td>Mobile </td>
         <td><input name="mobile" maxlength="10" type="text" id="mobile" /></td>
       </tr>
+      <tr>
         <tr>
-        <td><b>Password</b></td>
+        <td>Password</td>
         <td><input name="password" type="password" id="password" /></td>
       </tr>
       <tr>
         <td colspan="2"> <div align="center">
-          <input name="register" type="submit" id="submit" value="Create Account" />
+          <input style="background-color: #CC3366" name="register" type="submit" id="submit" value="Create Account" />
         </div></td>
+      </tr>
+       <tr>
+        <th colspan="3" scope="col"> <a style="color:#CC3366" href="login.php" >Already have an account?Login</a> </th>
       </tr>
     </table>
     <label></label>

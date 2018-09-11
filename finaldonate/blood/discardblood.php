@@ -11,24 +11,24 @@
 <style>
 	html{overflow-x:hidden;}
 	</style>
-<link href="/donateblood/css/templatemo_style.css" rel="stylesheet" type="text/css" />
+<link href="/finaldonate/css/templatemo_style.css" rel="stylesheet" type="text/css" />
 <!-- templatemo 358 carousel -->
 <!-- 
 Carousel Template 
 http://www.templatemo.com/preview/templatemo_358_carousel 
 -->
-<script type="text/javascript" src="/donateblood/js/jquery-1-4-2.min.js"></script> 
+<script type="text/javascript" src="/finaldonate/js/jquery-1-4-2.min.js"></script> 
 <!--script type="text/javascript" src="/jqueryui/js/jquery-ui-1.7.2.custom.min.js"></script--> 
-<script type="text/javascript" src="/donateblood/js/jquery-ui.min.js"></script> 
-<script type="text/javascript" src="/donateblood/js/showhide.js"></script> 
-<link rel="stylesheet" href="/donateblood/css/slimbox2.css" type="text/css" media="screen" /> 
-<script type="text/JavaScript" src="/donateblood/js/jquery.mousewheel.js"></script> 
-<script type="text/JavaScript" src="/donateblood/js/slimbox2.js"></script> 
+<script type="text/javascript" src="/finaldonate/js/jquery-ui.min.js"></script> 
+<script type="text/javascript" src="/finaldonate/js/showhide.js"></script> 
+<link rel="stylesheet" href="/finaldonate/css/slimbox2.css" type="text/css" media="screen" /> 
+<script type="text/JavaScript" src="/finaldonate/js/jquery.mousewheel.js"></script> 
+<script type="text/JavaScript" src="/finaldonate/js/slimbox2.js"></script> 
 
-<link rel="stylesheet" type="text/css" href="/donateblood/css/ddsmoothmenu.css" />
+<link rel="stylesheet" type="text/css" href="/finaldonate/css/ddsmoothmenu.css" />
 
-<script type="text/javascript" src="/donateblood/js/jquery.min.js"></script>
-<script type="text/javascript" src="/donateblood/js/ddsmoothmenu.js">
+<script type="text/javascript" src="/finaldonate/js/jquery.min.js"></script>
+<script type="text/javascript" src="/finaldonate/js/ddsmoothmenu.js">
 
 /***********************************************
 * Smooth Navigational Menu- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
@@ -65,17 +65,17 @@ ddsmoothmenu.init({
 
 <div id="templatemo_header_wrapper">
   <div id="site_title">
-	<a href="/donateblood/index.html?lang=en&amp;style=style-default"
-							class="appbrand pull-left"><img src="/donateblood/images/blood2.jpg" width="200" height="100"></a>
+	<a href="/finaldonate/index.html?lang=en&amp;style=style-default"
+							class="appbrand pull-left"><img src="/finaldonate/images/blood2.jpg" width="200" height="100"></a>
   </div>
       <div id="templatemo_menu" class="ddsmoothmenu">
         <ul>
-            <li><a href="/donateblood/index.html">Home</a></li>
-            <li><a href="/donateblood/about.html" >About</a></li>
-			<li><a href="/donateblood/services.html">Services</a></li>
-            <li><a href="/donateblood/blog.html" >Blog</a></li>
-            <li><a href="/donateblood/contact.html" >Contact Us</a></li>
-			<li><a href="/donateblood/index.html" >Log Out</a>
+            <li><a href="/finaldonate/index.html">Home</a></li>
+            <li><a href="/finaldonate/about.html" >About</a></li>
+			<li><a href="/finaldonate/services.html">Services</a></li>
+            <li><a href="/finaldonate/blog.html" >Blog</a></li>
+            <li><a href="/finaldonate/contact.html" >Contact Us</a></li>
+			<li><a href="/finaldonate/index.html" >Log Out</a>
 			                </li>
 
         </ul>
@@ -145,24 +145,24 @@ ddsmoothmenu.init({
     <th colspan="2" bgcolor="#FFFFFF" scope="col"><span class="style9">Menu</span></th>
   </tr>
   <tr>
-    <td width="179" bgcolor="#CC3366"><input  style="width:150px" name="update2" type="submit" id="update2" value="Update personal Details" onclick="location.href='/donateblood/menu/adminupdate.php'"/>    </td>
-    <td width="169" bgcolor="#CC3366"><input style="width:150px"  name="hospitals" type="submit" id="hospitals" value="Hospitals" onclick="location.href='/donateblood/hospitals/hospitals.php'"/></td>
+    <td width="179" bgcolor="#CC3366"><input  style="width:150px" name="update2" type="submit" id="update2" value="Update personal Details" onclick="location.href='/finaldonate/menu/adminupdate.php'"/>    </td>
+    <td width="169" bgcolor="#CC3366"><input style="width:150px"  name="hospitals" type="submit" id="hospitals" value="Hospitals" onclick="location.href='/finaldonate/hospitals/hospitals.php'"/></td>
   </tr>
   <tr>
-    <td bgcolor="#CC3366"><input  style="width:150px" name="password" type="submit" id="password" value="Change Password" onclick="location.href='/donateblood/password/adminpassword.php'"/></td>
-    <td bgcolor="#CC3366"><input style="width:150px" name="types" type="submit" id="types" value="Blood Counts" onclick="location.href='/donateblood/blood/bloodtypes.php'"/></td>
+    <td bgcolor="#CC3366"><input  style="width:150px" name="password" type="submit" id="password" value="Change Password" onclick="location.href='/finaldonate/password/adminpassword.php'"/></td>
+    <td bgcolor="#CC3366"><input style="width:150px" name="types" type="submit" id="types" value="Blood Counts" onclick="location.href='/finaldonate/blood/bloodtypes.php'"/></td>
   </tr>
   <tr>
-    <td bgcolor="#CC3366"><input style="width:150px" name="processed" type="submit" id="processed" value="Processed Blood" onclick="location.href='/donateblood/blood/processedblood.php'"/></td>
-    <td bgcolor="#CC3366"><input style="width:150px" name="donated" type="submit" id="donated" value="Donated Blood" onclick="location.href='/donateblood/blood/donatedblood.php'"/></td>
+    <td bgcolor="#CC3366"><input style="width:150px" name="processed" type="submit" id="processed" value="Processed Blood" onclick="location.href='/finaldonate/blood/processedblood.php'"/></td>
+    <td bgcolor="#CC3366"><input style="width:150px" name="donated" type="submit" id="donated" value="Donated Blood" onclick="location.href='/finaldonate/blood/donatedblood.php'"/></td>
   </tr>
   <tr>
-    <td bgcolor="#CC3366"><input style="width:150px" name="recipientsapp" type="submit" id="recipientsapp" value="Recipients Appointments" onclick="location.href='/donateblood/appointments/adminrecipients.php'"/></td>
-    <td bgcolor="#CC3366"><input style="width:150px" name="transfused" type="submit" id="transfused" value="Transfused Blood" onclick="location.href='/donateblood/blood/transfusedblood.php'"/></td>
+    <td bgcolor="#CC3366"><input style="width:150px" name="recipientsapp" type="submit" id="recipientsapp" value="Recipients Appointments" onclick="location.href='/finaldonate/appointments/adminrecipients.php'"/></td>
+    <td bgcolor="#CC3366"><input style="width:150px" name="transfused" type="submit" id="transfused" value="Transfused Blood" onclick="location.href='/finaldonate/blood/transfusedblood.php'"/></td>
   </tr>
   <tr>
-    <td bgcolor="#CC3366"><input style="width:150px" name="donorsapp" type="submit" id="donorsapp" value="Donors Appointments" onclick="location.href='/donateblood/appointments/admindonors.php'"/></td>
-    <td bgcolor="#CC3366"><input style="width:150px" name="discard" type="submit" id="discard" value="Discard Blood" onclick="location.href='/donateblood/blood/discardblood.php'"/></td>
+    <td bgcolor="#CC3366"><input style="width:150px" name="donorsapp" type="submit" id="donorsapp" value="Donors Appointments" onclick="location.href='/finaldonate/appointments/admindonors.php'"/></td>
+    <td bgcolor="#CC3366"><input style="width:150px" name="discard" type="submit" id="discard" value="Discard Blood" onclick="location.href='/finaldonate/blood/discardblood.php'"/></td>
   </tr>
   <tr>
     <td bgcolor="#CC3366">&nbsp;</td>
@@ -190,10 +190,10 @@ ddsmoothmenu.init({
         	<h4><span></span>Our Services</h4>
             <div class="bottom_box">
                 <ul class="footer_list">
-                    <li><a href="/donateblood/services.html">Appointments booking</a></li>
-                    <li><a href="/donateblood/services.html">Blood donation services</a></li>
-                    <li><a href="/donateblood/services.html">Blood transfusion services</a></li>
-                    <li><a href="/donateblood/services.html">Health guidance</a></li>
+                    <li><a href="/finaldonate/services.html">Appointments booking</a></li>
+                    <li><a href="/finaldonate/services.html">Blood donation services</a></li>
+                    <li><a href="/finaldonate/services.html">Blood transfusion services</a></li>
+                    <li><a href="/finaldonate/services.html">Health guidance</a></li>
                     
                 </ul>  
 			</div>
@@ -201,11 +201,11 @@ ddsmoothmenu.init({
         <div class="col one_third">
         	<h4><span></span>Contact us</h4>
             <div class="bottom_box">
-			 <p><em> Contact us using the social links. Find contact detailsfor specific hospitals in our <a href="/donateblood/contact.html">Contact Us</a> page. </em></p><br />
+			 <p><em> Contact us using the social links. Find contact detailsfor specific hospitals in our <a href="/finaldonate/contact.html">Contact Us</a> page. </em></p><br />
                 <div class="footer_social_button">
-                    <a href="#"><img src="/donateblood/images/facebook.png" title="facebook" alt="facebook" /></a>
-                    <a href="#"><img src="/donateblood/images/flickr.png" title="flickr" alt="flickr" /></a>
-                    <a href="#"><img src="/donateblood/images/twitter.png" title="twitter" alt="twitter" /></a>
+                    <a href="#"><img src="/finaldonate/images/facebook.png" title="facebook" alt="facebook" /></a>
+                    <a href="#"><img src="/finaldonate/images/flickr.png" title="flickr" alt="flickr" /></a>
+                    <a href="#"><img src="/finaldonate/images/twitter.png" title="twitter" alt="twitter" /></a>
                     
                 </div>
 			</div>

@@ -244,8 +244,8 @@ $username = $_POST['username'];
   if(!empty($username) && !empty($password) && !empty($newpassword)){
   
   $query ="SELECT * FROM users WHERE (email='$username' AND password='$password')";
-  var_dump($sql);
-       die();
+  // var_dump($sql);
+  //      die();
   
   if ($query_run= mysqli_query($con,$query)){
   	

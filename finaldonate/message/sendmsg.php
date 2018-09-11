@@ -1,17 +1,16 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Donate Blood- Hospitals</title>
+<title>Donate Blood- Login Page</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 
 <style>
-	html{overflow-x:hidden;}
-	</style>
+    html{overflow-x:hidden;}
+    </style>
 <link href="/finaldonate/css/templatemo_style.css" rel="stylesheet" type="text/css" />
 <!-- templatemo 358 carousel -->
 <!-- 
@@ -42,11 +41,11 @@ http://www.templatemo.com/preview/templatemo_358_carousel
 <script type="text/javascript">
 
 ddsmoothmenu.init({
-	mainmenuid: "templatemo_menu", //menu DIV id
-	orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
-	classname: 'ddsmoothmenu', //class added to menu's outer DIV
-	//customtheme: ["#1c5a80", "#18374a"],
-	contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
+    mainmenuid: "templatemo_menu", //menu DIV id
+    orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
+    classname: 'ddsmoothmenu', //class added to menu's outer DIV
+    //customtheme: ["#1c5a80", "#18374a"],
+    contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
 })
 
 </script> 
@@ -54,9 +53,7 @@ ddsmoothmenu.init({
 <style type="text/css">
 <!--
 .style3 {color: #000000}
-.style7 {            width: 157px;
-}
-.style8 {color: #CC0000}
+.style4 {color: #CC0000}
 -->
 </style>
 </head>
@@ -65,82 +62,46 @@ ddsmoothmenu.init({
 
 <div id="templatemo_header_wrapper">
   <div id="site_title">
-	<a href="/finaldonate/index.html?lang=en&amp;style=style-default"
-							class="appbrand pull-left"><img src="/finaldonate/images/blood2.jpg" width="200" height="100"></a>
+  <a href="index.html?lang=en&amp;style=style-default"
+              class="appbrand pull-left"><img src="/finaldonate/images/blood2.jpg" width="200" height="100"></a>
   </div>
-      <div id="templatemo_menu" class="ddsmoothmenu">
+     <div id="templatemo_menu" class="ddsmoothmenu">
         <ul>
-            <li><a href="/finaldonate/index.html">Home</a></li>
-            <li><a href="/finaldonate/about.html" >About</a></li>
-			<li><a href="/finaldonate/services.html">Services</a></li>
-            <li><a href="/finaldonate/blog.html" >Blog</a></li>
-            <li><a href="/finaldonate/contact.html" >Contact Us</a></li>
-			<li><a href="/finaldonate/index.html" >Log Out</a>
-			                </li>
+            <li><a href="index.html" class="selected">Home</a></li>
+            <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="login.php">Login</a></li>
 
         </ul>
         <br style="clear: left" />
     </div> <!-- end of templatemo_menu -->
     <div class="cleaner"></div>
-</div>	<!-- END of templatemo_header_wrapper -->
-
+</div>  <!-- END of templatemo_header_wrapper -->
 <div id="templatemo_main">
 
-  <form id="form1" name="form1" method="post" action="search.php">
+  <form id="form2" name="form2" method="post" action="messagecon.php">
     <label></label>
     <p>
       <label></label>
     </p>
-    <table width="450" border="1" align="center">
+    <table width="332" border="1" align="center">
       <tr>
-        <th colspan="2" scope="col"><span class="style8">Insert hospital ID and click search to get details. To physicaly view the location go to the <a href="/finaldonate/contact.html" >Contact Us</a> page </span>          
-          <div align="left"></div>
-        </th>
+        <th colspan="2" scope="col">send a message to users</th>
       </tr>
-      <tr>
-        <td width="102"><span class="style3">Hospital ID </span></td>
-        <td width="332"><input name="hospitalID" type="text" id="hospitalID" />
-          
-          <span class="style3">
-          <input style="width:120px" name="search" type="submit" id="search" value="Search Hospital" />
-          </span>
-        <div align="left"></div></td>
-      </tr>
-       <tr>
-        <td><span class="style3">Location</span></td>
-        <td><input name="location" type="text" id="location"  />
-          
-        <div align="left"></div></td>
-      </tr>
-      <tr>
-        <td><span class="style3">Hospital Name </span></td>
-        <td><input name="name" type="text" id="name" />
-          
-        <div align="left"></div></td>
-      </tr>
-      <tr>
-        <td><span class="style3">mobile Number</span></td>
-        <td><input name="mobileNo" type="text" id="mobileNo"  />
-          
-        <div align="left"></div></td>
-      </tr>
-       <tr>
-        <td><span class="style3">Email</span></td>
-        <td><input name="email" type="text" id="email"  />
-          
-        <div align="left"></div></td>
-      </tr>
-      
       <tr>
         <td colspan="2"> <div align="center">
-          <p class="style3">&nbsp;</p>
-          <p class="style3">&nbsp;</p>
+          Enter message here
+          <textarea style="background-color: #CC3366" value="message" name="message" rows="10" cols="30">
+         </textarea>
+       </tr>
+     </tr>
+         <td colspan="2"> <div align="center">
+          <input style="background-color: #CC3366" name="sendmsg" type="submit" id="sendmsg" value="Send" />
         </div></td>
       </tr>
     </table>
-    <p align="center" class="style3">&nbsp;</p>
-   
-    <p>&nbsp;</p>
     <label></label>
   </form>
  
@@ -149,8 +110,8 @@ ddsmoothmenu.init({
 
 <div id="templatemo_bottom_wrapper">
     <div id="templatemo_bottom">
-    	<div class="col one_third">
-        	<h4><span></span>Our Services</h4>
+      <div class="col one_third">
+          <h4><span></span>Our Services</h4>
             <div class="bottom_box">
                 <ul class="footer_list">
                     <li><a href="/finaldonate/services.html">Appointments booking</a></li>
@@ -159,22 +120,22 @@ ddsmoothmenu.init({
                     <li><a href="/finaldonate/services.html">Health guidance</a></li>
                     
                 </ul>  
-			</div>
+      </div>
         </div>
         <div class="col one_third">
-        	<h4><span></span>Contact us</h4>
+          <h4><span></span>Contact us</h4>
             <div class="bottom_box">
-			 <p><em> Contact us using the social links. Find contact detailsfor specific hospitals in our <a href="/finaldonate/contact.html">Contact Us</a> page. </em></p><br />
+       <p><em> Contact us using the social links. Find contact detailsfor specific hospitals in our <a href="/finaldonate/contact.html">Contact Us</a> page. </em></p><br />
                 <div class="footer_social_button">
                     <a href="#"><img src="/finaldonate/images/facebook.png" title="facebook" alt="facebook" /></a>
                     <a href="#"><img src="/finaldonate/images/flickr.png" title="flickr" alt="flickr" /></a>
                     <a href="#"><img src="/finaldonate/images/twitter.png" title="twitter" alt="twitter" /></a>
                     
                 </div>
-			</div>
+      </div>
         </div>
         <div class="col one_third no_margin_right">
-        	<h4><span></span>About Us</h4>
+          <h4><span></span>About Us</h4>
             <div class="bottom_box">
                 <p><em> Donate Blood is a combined effort of various blood banks to provide a means that 
                 helps in conducting blood donation drives, facilitate registration of blood 
@@ -183,19 +144,15 @@ ddsmoothmenu.init({
             </div>
         </div>
         
-    	<div class="cleaner"></div>
+      <div class="cleaner"></div>
     </div> <!-- END of tempatemo_bottom -->
 </div> <!-- END of tempatemo_bottom_wrapper -->
 
 <div id="templatemo_footer_wrapper">
     <div id="templatemo_footer">
-    	Copyright © Donate Blood
+      Copyright © Donate Blood
     </div> <!-- END of templatemo_footer_wrapper -->
 </div> <!-- END of templatemo_footer -->
 
 </body>
 </html>
-
-
-
-

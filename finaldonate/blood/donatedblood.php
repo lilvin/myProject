@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+finaldonate<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -122,6 +122,21 @@ ddsmoothmenu.init({
             <option>102</option>
             <option>103</option>
             <option>104</option>
+                        </select></td>
+      </tr>
+     
+	   
+	   <tr>
+        <td><span class="style3">Donor ID number</span> </td>
+        <td><input name="ID" maxlength="8" type="text" id="ID">
+                        </input></td>
+      </tr>
+	   <tr>
+        <td><span class="style3">Gender </span></td>
+        <td><select name="gender" size="1" id="gender">
+		<option>male</option>
+            <option>female</option>
+            
                         </select></td>
       </tr>
       <tr>

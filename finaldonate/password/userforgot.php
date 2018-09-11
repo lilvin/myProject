@@ -197,7 +197,6 @@ $username = $_POST['username'];
   $query ="SELECT * FROM users WHERE (email='$username') and (userType='user')";
 
   if ($query_run= mysqli_query($con,$query)){
-  	
         if(mysqli_num_rows($query_run)==1){
    
    echo 'yees';

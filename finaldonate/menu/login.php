@@ -106,26 +106,24 @@ ddsmoothmenu.init({
       </tr>
       <tr>
         <td colspan="2"> <div align="center">
-          <input type="submit" name="login" value="Login" />
+          <input style="background-color: #CC3366" type="submit" name="login" value="Login" />
         </div></td>
       </tr>
     </table>
-    
   </form>
  
     <table width="330" border="1" align="center" style="margin-top:5px">
       <tr>
         <td><div align="center">
-          <input name="forgot" type="submit" id="forgot" value="Forgot Password" onClick="location.href='/finaldonate/password/userforgot.php'"/>
+          <input style="background-color: #CC3366" name="forgot" type="submit" id="forgot" value="Forgot Password" onClick="location.href='/finaldonate/password/userforgot.php'"/>
+        </div></td>
+        <td><div align="center">
+          <input style="background-color: #CC3366" name="" type="submit" id="create" value="Create an account" onClick="location.href='/finaldonate/menu/userReg.php'"/>
         </div></td>
       </tr>
     </table>
-  <p></p>
-   
+  <p></p> 
 </div> <!-- END of templatemo_main -->
-
-
-
 <div id="templatemo_bottom_wrapper">
     <div id="templatemo_bottom">
     	<div class="col one_third">

@@ -3,7 +3,7 @@
 $servername="localhost";
 $username="root";
 $password="";
-$dbname="donate blood";
+$dbname="bloodbank";
 
 
 $con=new mysqli($servername,$username,$password,$dbname) or die("failed to connect to server");
