@@ -1,3 +1,47 @@
+<?php
+session_start();
+$error ="";
+include_once 'init.php';
+include ("functions.php");
+
+if (logged_in()) {
+  header("location:userlogincon.php");
+  exit();
+}
+
+if(isset($_POST['login'])){
+  $email=mysqli_real_escape_string($con,$_POST['email']);
+  $password=mysqli_real_escape_string($con,$_POST['password']);
+
+
+   if(email_exists($con,$email)){
+     
+     $result=mysqli_query($con,"SELECT * FROM users WHERE email='$email'");
+     $retPassword=mysqli_fetch_assoc($result);
+
+           if($password !== $retPassword['password']){
+              $error="password is not correct";
+           }
+           else{
+              
+              $_SESSION['email'] = $email;  //session set for the email
+              if ($retPassword['userType'] == 'user') {
+                header("location:userlogincon.php");
+              }else{
+                 header("location:adminlogincon.php");
+              }
+             
+            }
+
+    }else{
+
+     $error="Email does not exist";
+   }
+
+}
+
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -11,7 +55,9 @@
 <style>
 	html{overflow-x:hidden;}
 	</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <link href="/donateblood/css/templatemo_style.css" rel="stylesheet" type="text/css" />
+
 <!-- templatemo 358 carousel -->
 <!-- 
 Carousel Template 
@@ -21,6 +67,7 @@ http://www.templatemo.com/preview/templatemo_358_carousel
 <!--script type="text/javascript" src="/jqueryui/js/jquery-ui-1.7.2.custom.min.js"></script--> 
 <script type="text/javascript" src="/donateblood/js/jquery-ui.min.js"></script> 
 <script type="text/javascript" src="/donateblood/js/showhide.js"></script> 
+
 <link rel="stylesheet" href="/donateblood/css/slimbox2.css" type="text/css" media="screen" /> 
 <script type="text/JavaScript" src="/donateblood/js/jquery.mousewheel.js"></script> 
 <script type="text/JavaScript" src="/donateblood/js/slimbox2.js"></script> 
@@ -54,6 +101,9 @@ ddsmoothmenu.init({
 <!--
 .style3 {color: #000000}
 -->
+#error{
+ display: none;
+}
 </style>
 </head>
 
@@ -78,9 +128,11 @@ ddsmoothmenu.init({
     </div> <!-- end of templatemo_menu -->
     <div class="cleaner"></div>
 </div>	<!-- END of templatemo_header_wrapper -->
-
+<div class="alert alert-success" id="error" style="<?php if ($error != "") {?> display: block; <?php } ;?>">
+   <?php echo $error ;?>
+</div>
 <div id="templatemo_main">
-  <form id="form1" name="form1" method="post" action="userlogincon.php">
+  <form id="form1" name="form1" method="post" action="login.php">
     <label></label>
     <p>
       <label></label>
@@ -94,7 +146,7 @@ ddsmoothmenu.init({
         <td width="258"><p><span class="style3">Your email address</span>
           </p>
           <p>
-            <input name="username" type="text" id="username" />
+            <input name="email" type="text" id="email" />
         </p></td>
       </tr>
       <tr>
@@ -105,8 +157,8 @@ ddsmoothmenu.init({
           </p></td>
       </tr>
       <tr>
-        <td colspan="2"> <div align="center">
-          <input style="background-color: #CC3366" type="submit" name="login" value="Login" />
+        <td colspan="2"> <div align="center" style="background-color: #CC3366">
+          <input  type="submit" name="login" value="Login" />
         </div></td>
       </tr>
     </table>
@@ -114,11 +166,11 @@ ddsmoothmenu.init({
  
     <table width="330" border="1" align="center" style="margin-top:5px">
       <tr>
-        <td><div align="center">
-          <input style="background-color: #CC3366" name="forgot" type="submit" id="forgot" value="Forgot Password" onClick="location.href='/finaldonate/password/userforgot.php'"/>
+        <td><div align="center" style="background-color: #CC3366">
+          <input name="forgot" type="submit" id="forgot" value="Forgot Password" onClick="location.href='/finaldonate/password/userforgot.php'"/>
         </div></td>
-        <td><div align="center">
-          <input style="background-color: #CC3366" name="" type="submit" id="create" value="Create an account" onClick="location.href='/finaldonate/menu/userReg.php'"/>
+        <td><div align="center"style="background-color: #CC3366">
+          <input name="" type="submit" id="create" value="Create an account" onClick="location.href='/finaldonate/menu/userReg.php'"/>
         </div></td>
       </tr>
     </table>

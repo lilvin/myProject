@@ -1,5 +1,6 @@
 <?php
 //connecting to database
+$message='';
 $servername="localhost";
 $username="root";
 $password="";
@@ -28,7 +29,10 @@ die("connection failed:".mysqli_connect_error());
 	   
 	   if($con->query($sql)===TRUE)
 	   {
-	   echo"booking successfull. You will be contacted for further guidance.";
+	   //echo"booking successfull. You will be contacted for further guidance.";
+        $message = "booking successfull. You will be contacted for further guidance.";
+        header("location:donorsappointments.php");
+        exit();
 	   }
 	   else{
 	   echo "Error:" . $sql. "<br>" . $con->error;

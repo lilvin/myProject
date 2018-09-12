@@ -2,17 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Donate Blood- User Profile Page</title>
+<title>Donate Blood- Login Page</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 
 <style>
-  html{overflow-x:hidden;}
-  </style>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.js">
+	html{overflow-x:hidden;}
+	</style>
 <link href="/finaldonate/css/templatemo_style.css" rel="stylesheet" type="text/css" />
 <!-- templatemo 358 carousel -->
 <!-- 
@@ -43,11 +41,11 @@ http://www.templatemo.com/preview/templatemo_358_carousel
 <script type="text/javascript">
 
 ddsmoothmenu.init({
-  mainmenuid: "templatemo_menu", //menu DIV id
-  orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
-  classname: 'ddsmoothmenu', //class added to menu's outer DIV
-  //customtheme: ["#1c5a80", "#18374a"],
-  contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
+	mainmenuid: "templatemo_menu", //menu DIV id
+	orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
+	classname: 'ddsmoothmenu', //class added to menu's outer DIV
+	//customtheme: ["#1c5a80", "#18374a"],
+	contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
 })
 
 </script> 
@@ -64,28 +62,18 @@ ddsmoothmenu.init({
 
 <div id="templatemo_header_wrapper">
   <div id="site_title">
-  <a href="/finaldonate/index.html?lang=en&amp;style=style-default"
-              class="appbrand pull-left"><img src="/finaldonate/images/blood2.jpg" width="200" height="100"></a>
+  <a href="index.html?lang=en&amp;style=style-default"
+              class="appbrand pull-left"><img src="images/blood2.jpg" width="200" height="100"></a>
   </div>
-      <div id="templatemo_menu" class="ddsmoothmenu">
+     <div id="templatemo_menu" class="ddsmoothmenu">
         <ul>
-            <li><a href="/finaldonate/index.html">Home</a></li>
-            <li><a href="/finaldonate/menu/userlogincon.php" >Dashboard</a></li>
-            <li><a href="/finaldonate/about.html" >About</a></li>
-      <li><a href="/finaldonate/services.html">Services</a></li>
-            <li><a href="/finaldonate/blog.html" >Blog</a></li>
-            <li><a href="/finaldonate/contact.html" >Contact Us</a></li>
-             <li class="dropdown">
-           <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Hello <?php echo $return['firstName'];?>
-           <span class="caret"></span> 
-           </a>
-           <ul class="dropdown-menu dropnav" role="menu">
-             <li><a href="userpassword.php">Change password</a></li>
-             <li><a href="logout.php">Log Out</a></li>
-           </ul>
-         </li>
-      <!-- <li><a href="/finaldonate/menu/logout.php" >Log Out</a> -->
-          </li>
+            <li><a href="index.html" class="selected">Home</a></li>
+            <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="login.php">Logout</a></li>
+
         </ul>
         <br style="clear: left" />
     </div> <!-- end of templatemo_menu -->

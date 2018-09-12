@@ -1,12 +1,50 @@
 <?php
-include_once 'init.php';
+//error_reporting(0);
+include 'init.php';
 session_start();
 include ("functions.php");
+$message='';
+
 
 if (logged_in()) {
   $email=$_SESSION['email'];
-  $sql=$con->query("SELECT * FROM users WHERE email='$email'");
-  $return=mysqli_fetch_assoc($sql);
+  // $sql=$con->query("SELECT * FROM users WHERE email='$email'");
+  // $return=mysqli_fetch_assoc($sql);
+  if (isset($_POST['change']))
+  {
+
+  $current_password =$_POST['current_password'];
+  $password =$_POST['password'];
+  $confirm_password=$_POST['confirm_password'];
+  
+  
+  if(!empty($current_password) && !empty($password) && !empty($confirm_password)){
+  
+    $sql=$con->query("SELECT * FROM users WHERE email='$email' AND password='$current_password'");
+    $return=mysqli_fetch_assoc($sql);
+   //$query ="SELECT * FROM users WHERE email='$email' AND password='12345'";
+  // var_dump($sql);
+  //      die(); 
+     if ($current_password!==$return['password']){
+
+      $message="The current password entered is not correct";
+
+     }elseif($password !== $confirm_password){
+
+    $message="The entered passwords do not match";
+
+     }else{
+
+       $query= "UPDATE users SET password='$password' WHERE email='$email'";
+       mysqli_query($con,$query);
+       $message= 'record sucessfully updated';
+    }
+  }else{
+    $message = "*All fields are required";
+  }
+  }
+
+
 
 ?>
 
@@ -14,7 +52,7 @@ if (logged_in()) {
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Donate Blood- Login Page</title>
+<title>Donate Blood- Change Password</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -23,6 +61,8 @@ if (logged_in()) {
 <style>
 	html{overflow-x:hidden;}
 	</style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.js.css">
 <link href="/finaldonate/css/templatemo_style.css" rel="stylesheet" type="text/css" />
 <!-- templatemo 358 carousel -->
 <!-- 
@@ -64,13 +104,11 @@ ddsmoothmenu.init({
 
 <style type="text/css">
 <!--
-.style8 {
-	font-size: 14px;
-	color: #CC0000;
-}
-.style9 {color: #CC0000}
 .style10 {color: #000000}
 -->
+#message{
+  display: none;
+}
 </style>
 </head>
 
@@ -88,8 +126,9 @@ ddsmoothmenu.init({
 			<li><a href="/finaldonate/services.html">Services</a></li>
             <li><a href="/finaldonate/blog.html" >Blog</a></li>
             <li><a href="/finaldonate/contact.html" >Contact Us</a></li>
-		  <li><a href="/finaldonate/menu/logout.php" >Log Out</a>
-          </li>
+			<li><a href="/finaldonate/index.html" >Log Out</a>
+			                </li>
+
         </ul>
         <br style="clear: left" />
     </div> <!-- end of templatemo_menu -->
@@ -97,51 +136,81 @@ ddsmoothmenu.init({
 </div>	<!-- END of templatemo_header_wrapper -->
 
 <div id="templatemo_main">
- 
+   <div class="alert alert-success" id="message" style="<?php if ($message != "") {?> display: block; <?php } ;?>">
+   <?php echo $message ;?>
+</div>
+<table width="332" height="332" border="1" align="center"  >
+  <tr>
+    <th colspan="2" rowspan="7" scope="col">
+	<!-- begin table inside table-->
+
+ <form id="form1" name="form1" method="post" action="">
   <br/></p>
-<table width="669" border="1" align="center">
-  <tr>
-    <th colspan="2" scope="col"><span class="style8">Personal Details</span> </th>
-    <th colspan="2" bgcolor="#FFFFFF" scope="col"><span class="style9">Menu</span></th>
+  <p><br/>
+  <br/>
+  <table width="332" border="1" align="center">
+    <tr>
+      <th colspan="2" scope="col"><span class="style10">Change password </span></th>
+    </tr>
+    <tr>
+      <td width="106"><span class="style10">Current Password</span></td>
+      <td width="210"><p><span class="style10">Your Current Password </span> </p>
+          <p>
+            <input name="current_password" type="password" id="current_password" />
+        </p></td>
+    </tr>
+    <tr>
+      <td><span class="style10">New Password</span></td>
+      <td><p class="style10">Your new password </p>
+          <p>
+            <input name="password" type="password" id="password" />
+        </p></td>
+    </tr>
+    <tr>
+      <td><span class="style10">Confirm New Password </span></td>
+      <td> <p class="style10">Confirm new password </p>
+        <p>
+        <input name="confirm_password" type="password" id="confirm_password" />
+      </p></td>
+    </tr>
+    <tr>
+      <td colspan="2"><div align="center">
+          <input name="change" type="submit" id="change" value="Change Password" />
+      </div></td>
+    </tr>
+  </table>
+  <p><br/>
+        <br/>
+  <div>
+  
+  
+</p>
+ </form>
+
+  <!--second column--></th>
+    <th height="94" colspan="2" bgcolor="#FFFFFF" scope="col"><span class="style9">Menu</span></th>
   </tr>
   <tr>
-    <td width="121"><span class="style10">ID number </span></td>
-    <td width="201"><p>
-      <input name="id" maxlength="8" type="text" id="idNumber" value="<?php echo $return['idNumber']; ?>"disabled/>
-      </p>        </td>
-    <td width="150" bgcolor="#CC3366"><input  style="width:150px" name="update" type="submit" id="update" value="Update personal Details" onclick="location.href='/finaldonate/menu/adminupdate.php'"/>	</td>
-    <td width="169" bgcolor="#CC3366"><input style="width:150px"  name="hospitals" type="submit" id="hospitals" value="Hospitals" onclick="location.href='/finaldonate/hospitals/hospitals.php'"/></td>
+    <td width="144" bgcolor="#CC3366"><input name="update" type="submit" id="update" value="Update details"  onclick="location.href='/finaldonate/menu/userupdate.php'"/></td>
+    <td width="1" bgcolor="#CC3366">&nbsp;</td>
   </tr>
   <tr>
-    <td><span class="style10">First Name</span> </td>
-    <td><p>
-      <input name="firstName"  maxlength="20" type="text" id="firstName" value="<?php echo $return['firstName']; ?>" disabled/>
-      </p>        </td>
-	  
-    <td width="150" bgcolor="#CC3366"><input  style="width:150px" name="password" type="submit" id="password" value="Change Password" onclick="location.href='/finaldonate/password/adminpassword.php'"/></td>
-    <td bgcolor="#CC3366"><input style="width:150px" name="types" type="submit" id="types" value="Blood Counts" onclick="location.href='/finaldonate/blood/bloodtypes.php'"/></td>
+    <td bgcolor="#CC3366"><input name="password2" type="submit" id="password2" value="Change Password" onclick="location.href='/finaldonate/password/userpassword.php'"/></td>
+    <td bgcolor="#CC3366">&nbsp;</td>
   </tr>
   <tr>
-    <td><span class="style10">Last Name</span> </td>
-    <td><input name="lastname" maxlength="20" type="text" id="lastname" value="<?php echo $return['lastName']; ?>"disabled /></td>
-    <td bgcolor="#CC3366"><input style="width:150px" name="processed" type="submit" id="processed" value="Processed Blood" onclick="location.href='/finaldonate/blood/processedblood.php'"/></td>
-    <td bgcolor="#CC3366"><input style="width:150px" name="donated" type="submit" id="donated" value="Donated Blood" onclick="location.href='/finaldonate/blood/donatedblood.php'"/></td>
+    <td bgcolor="#CC3366"><input name="hospital" type="submit" id="hospital" value="Search for hospital" onclick="location.href='/finaldonate/hospitals/searchhospital.php'"/></td>
+    <td bgcolor="#CC3366">&nbsp;</td>
   </tr>
   <tr>
-    <td><span class="style10">Email Address </span></td>
-    <td><input name="email" maxlength="50" type="text" id="email" value="<?php echo $return['email']; ?>"disabled/></td>
-    <td bgcolor="#CC3366"><input style="width:150px" name="recipientsapp" type="submit" id="recipientsapp" value="Recipients Appointments" onclick="location.href='/finaldonate/appointments/adminrecipients.php'"/></td>
-    <td bgcolor="#CC3366"><input style="width:150px" name="transfused" type="submit" id="transfused" value="Transfused Blood" onclick="location.href='/finaldonate/blood/transfusedblood.php'"/></td>
+    <td bgcolor="#CC3366"><input name="appointment" type="submit" id="appointment" value="Book appointment" onclick="location.href='/finaldonate/appointments/recipientsappointments.php'"/></td>
+    <td bgcolor="#CC3366">&nbsp;</td>
   </tr>
   <tr>
-    <td><span class="style10">Mobile</span></td>
-    <td><input name="mobile" maxlength="10" type="text" id="mobile" value="<?php echo $return['mobile']; ?>"disabled/></td>
-    <td bgcolor="#CC3366"><input style="width:150px" name="donorsapp" type="submit" id="donorsapp" value="Donors Appointments" onclick="location.href='/finaldonate/appointments/admindonors.php'"/></td>
-    <td bgcolor="#CC3366"><input style="width:150px" name="discard" type="submit" id="discard" value="Discard Blood" onclick="location.href='/finaldonate/blood/discardblood.php'"/></td>
+    <td bgcolor="#CC3366"><input name="cancel" type="submit" id="cancel" value="Cancel appointment" onclick="location.href='/finaldonate/appointments/recipientscancel.php'"/></td>
+    <td bgcolor="#CC3366">&nbsp;</td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
     <td bgcolor="#CC3366">&nbsp;</td>
     <td bgcolor="#CC3366">&nbsp;</td>
   </tr>
@@ -149,11 +218,12 @@ ddsmoothmenu.init({
     <td colspan="4"><div align="center"></div></td>
   </tr>
 </table>
-<p><br/>
-  <br/>
-  <br/>
-  <br/>
-<!-- END of templatemo_main -->
+
+ 
+</div> <!-- END of templatemo_main -->
+
+
+
 <div id="templatemo_bottom_wrapper">
     <div id="templatemo_bottom">
     	<div class="col one_third">
@@ -210,8 +280,3 @@ ddsmoothmenu.init({
 } 
 
 ?>
-
-
-	 
-	 
-  

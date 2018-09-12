@@ -1,119 +1,16 @@
 <?php
+include_once 'init.php';
+session_start();
+include ("functions.php");
 
-//connecting to database
-$servername="localhost";
-$username="root";
-$password="";
-$dbname="bloodbank";
-
-$con=new mysqli($servername,$username,$password,$dbname) or die("failed to connect to server");
-if (mysqli_connect_error()){
-die("connection failed:".mysqli_connect_error());
-}
-
-if (isset($_POST['login']))
-{
-$username = $_POST['username'];
-  $password =$_POST['password'];
-  //$password_hash=md5($password);
+if (logged_in()) {
+  $email=$_SESSION['email'];
+  $sql=$con->query("SELECT * FROM users WHERE email='$email'");
+  $return=mysqli_fetch_assoc($sql);
   
-  if(!empty($username) && !empty($password)){
-  $query ="SELECT * FROM users WHERE (email='$username' AND password='$password') AND(userType LIKE'user')";
-  
-  if ($query_run= mysqli_query($con,$query)){
-  	
-        if(mysqli_num_rows($query_run)==1){
-   
-   echo 'yees';
-   while($row= $query_run->fetch_assoc()){
-  $idNumber = $row['idNumber'];
-$firstname = $row['firstName'];
-$lastname = $row['lastName'];
-$email = $row['email'];
-$mobile = $row['mobile'];
-
+include_once('header.php');
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Donate Blood- Login Page</title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 
-<style>
-	html{overflow-x:hidden;}
-	</style>
-<link href="/finaldonate/css/templatemo_style.css" rel="stylesheet" type="text/css" />
-<!-- templatemo 358 carousel -->
-<!-- 
-Carousel Template 
-http://www.templatemo.com/preview/templatemo_358_carousel 
--->
-<script type="text/javascript" src="/finaldonate/js/jquery-1-4-2.min.js"></script> 
-<!--script type="text/javascript" src="/jqueryui/js/jquery-ui-1.7.2.custom.min.js"></script--> 
-<script type="text/javascript" src="/finaldonate/js/jquery-ui.min.js"></script> 
-<script type="text/javascript" src="/finaldonate/js/showhide.js"></script> 
-<link rel="stylesheet" href="/finaldonate/css/slimbox2.css" type="text/css" media="screen" /> 
-<script type="text/JavaScript" src="/finaldonate/js/jquery.mousewheel.js"></script> 
-<script type="text/JavaScript" src="/finaldonate/js/slimbox2.js"></script> 
-
-<link rel="stylesheet" type="text/css" href="/finaldonate/css/ddsmoothmenu.css" />
-
-<script type="text/javascript" src="/finaldonate/js/jquery.min.js"></script>
-<script type="text/javascript" src="/finaldonate/js/ddsmoothmenu.js">
-
-/***********************************************
-* Smooth Navigational Menu- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
-* This notice MUST stay intact for legal use
-* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
-***********************************************/
-
-</script>
-
-<script type="text/javascript">
-
-ddsmoothmenu.init({
-	mainmenuid: "templatemo_menu", //menu DIV id
-	orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
-	classname: 'ddsmoothmenu', //class added to menu's outer DIV
-	//customtheme: ["#1c5a80", "#18374a"],
-	contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
-})
-
-</script> 
-
-<style type="text/css">
-<!--
-.style3 {color: #000000}
-.style4 {color: #CC0000}
--->
-</style>
-</head>
-
-<body id="subpage">
-
-<div id="templatemo_header_wrapper">
-  <div id="site_title">
-	<a href="/finaldonate/index.html?lang=en&amp;style=style-default"
-							class="appbrand pull-left"><img src="/finaldonate/images/blood2.jpg" width="200" height="100"></a>
-  </div>
-      <div id="templatemo_menu" class="ddsmoothmenu">
-        <ul>
-            <li><a href="/finaldonate/index.html">Home</a></li>
-            <li><a href="/finaldonate/about.html" >About</a></li>
-			<li><a href="/finaldonate/services.html">Services</a></li>
-            <li><a href="/finaldonate/blog.html" >Blog</a></li>
-            <li><a href="/finaldonate/contact.html" >Contact Us</a></li>
-			<li><a href="/finaldonate/index.html" >Log Out</a>
-          </li>
-        </ul>
-        <br style="clear: left" />
-    </div> <!-- end of templatemo_menu -->
-    <div class="cleaner"></div>
-</div>	<!-- END of templatemo_header_wrapper -->
 
 <div id="templatemo_main">
  
@@ -126,19 +23,19 @@ ddsmoothmenu.init({
 <form id="form1" name="form1" method="post" action="">
 <span class="style4">Personal Details</span><br/>
 ID number:<br/>      
-  <input name="idNumber" type="text" maxlength="8" id="idNumber" value="<?php echo $idNumber; ?>" disabled>
+  <input name="idNumber" type="text" maxlength="8" id="idNumber" value="<?php echo $return['idNumber']; ?>" disabled>
   <br/>
 First name:<br/>    
-<input name="firstname" type="text" maxlength="20" id="firstname" value="<?php echo $firstname; ?>"disabled>
+<input name="firstname" type="text" maxlength="20" id="firstname" value="<?php echo $return['firstName']; ?>"disabled>
 <br/>
 Last name:<br/> 
-<input name="lastname" type="text" maxlength="20" id="lastname" value="<?php echo $lastname; ?>"disabled>
+<input name="lastname" type="text" maxlength="20" id="lastname" value="<?php echo $return['lastName']; ?>"disabled>
 <br/>
 Email address:<br/>
-<input name="email" type="text" maxlength="50" id="email" value="<?php echo $email; ?>"disabled>
+<input name="email" type="text" maxlength="50" id="email" value="<?php echo $return['email']; ?>"disabled>
 <br/>
 Mobile:<br/>  
-<input name="mobile" type="text" maxlength="10" id="mobile" value="<?php echo $mobile; ?>"disabled>
+<input name="mobile" type="text" maxlength="10" id="mobile" value="<?php echo $return['mobile']; ?>"disabled>
 <br/>
 <br/>
 </form>
@@ -239,55 +136,13 @@ Mobile:<br/>
 
 </body>
 </html>
-
-
 <?php
-}
-         }
-	 else{echo 'Wrong username/password combination'.  mysqli_error($con);} 
-   }
-   
-   else{echo 'Failed to select details from database'.  mysqli_error($con);}
-   }
-  else{echo 'Please insert a username and password'.  mysqli_error($con);}
-     }
-	 
-	 
-  // update details
-   if (isset($_POST['update'])){
-   $idNumber = $_POST['idNumber'];
-  $firstname = $_POST['firstname'];
-  $lastname = $_POST['lastname'];
-  $email = $_POST['email'];
-  $mobile = $_POST['mobile'];
-  $password = $_POST['password'];
-  //$password_hash=md5($password);
-  
-   if(!empty($idNumber) && !empty($firstname) && !empty($lastname) && !empty($email) && !empty($mobile) && !empty($password)){
-	   if (filter_var($email, FILTER_VALIDATE_EMAIL)){
-	   $query ="SELECT * FROM users WHERE (idNumber='$idNumber' AND password='$password')";
-  
-  if ($query_run= mysqli_query($con,$query)){
-  	
-        if(mysqli_num_rows($query_run)==1){
-  
- $query= "UPDATE users SET firstName='$firstname',lastName='$lastname', email='$email', mobile='$mobile' WHERE idNumber='$idNumber' AND password='$password'";
-if ($query_run= mysqli_query($con,$query)){
-echo 'record sucessfully updated';
-}
-else{echo 'record not updated. Ensure that your ID number and password are correct';}
- }
-	 else{echo 'Wrong ID number/password combination'.  mysqli_error($con);} 
-   }
-   
-   else{echo 'Failed to select details from database'.  mysqli_error($con);}
-}
-	    else{
-	   echo "invalid email address";
-	   }
-	   }
-  else{echo 'All fields are required'.  mysqli_error($con);}
-}
+}else{
 
-  
+  header("location:login.php");
+  exit();
+} 
+
 ?>
+
+

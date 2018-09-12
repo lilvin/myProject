@@ -1,3 +1,55 @@
+<?php
+include 'init.php';
+include ("functions.php");
+$message='';
+
+if (isset($_POST['register'])) {
+   $firstName = $_POST['firstName'];
+    $lastName = $_POST['lastName'];
+    $idNumber = $_POST['idNumber'];
+    $mobile = $_POST['mobile'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $user="user";
+      if (empty($firstName) && empty($lastName) && empty($idNumber) && empty($email) && empty($mobile) && empty($password) ) {
+        $message = "*All fields are required";
+      }
+      elseif (strlen($firstName)<3) {
+        $message = "First name must be more than 2 characters";
+      }elseif(preg_match('/^[a-zA-Z]+/',$firstName)){
+        $message = "worked ";
+      }elseif (strlen($lastName)<3) {
+        $message = "Last name must be more than 2 characters";
+      }elseif (strlen($idNumber)<6) {
+        $message = "Id number must be more than 5 numbers";
+      }elseif (!filter_var($email,FILTER_VALIDATE_EMAIL)) {
+        $message = "Please provide a valid email";
+      }elseif(email_exists($con ,$email)){
+        $message="That email exists";
+      }elseif (strlen($mobile)<12) {
+        $message = "phone number must be 13 characters";
+      }elseif(mobile_exists($con ,$mobile)){
+        $message="That phone number already exists";
+      }elseif(idNumber_exists($con ,$idNumber)){
+        $message="That id number already exists";
+      }elseif (strlen($password)<6) {
+        $message = "password must be more than 5 characters";
+      }else{
+         $sql = "INSERT INTO users(firstName,lastName,idNumber,mobile,email,userType,password) VALUES ('$firstName','$lastName','$idNumber','$mobile','$email','$user','$password')";
+          $query = mysqli_query($con,$sql);
+          if(!$query)
+           {
+           $message = "registration failed.";
+           }
+           else{
+           $message = "registration successful.login to proceed";
+           header("location:login.php");
+           exit();
+           }
+      }
+}
+
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -11,6 +63,7 @@
 <style>
 	html{overflow-x:hidden;}
 	</style>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <link href="/finaldonate/css/templatemo_style.css" rel="stylesheet" type="text/css" />
 <!-- templatemo 358 carousel -->
 <!-- 
@@ -55,6 +108,9 @@ ddsmoothmenu.init({
 .style3 {color: #000000}
 .style4 {color: #CC0000}
 -->
+#message{
+  display: none;
+}
 </style>
 </head>
 
@@ -81,8 +137,10 @@ ddsmoothmenu.init({
 </div>  <!-- END of templatemo_header_wrapper -->>
 
 <div id="templatemo_main">
-
-  <form id="form1" name="form1" method="post" action="userRegcon.php">
+<div class="alert alert-success col-md-6" id="message" style="<?php if ($message != "") {?> display: block; margin-left: 350px; <?php } ;?>">
+   <?php echo $message ;?>
+</div>
+  <form id="form1" name="form1" method="post" action="userReg.php">
     <label></label>
     <p>
       <label></label>
@@ -109,7 +167,7 @@ ddsmoothmenu.init({
       </tr>
       <tr>
         <td>Mobile </td>
-        <td><input name="mobile" maxlength="10" type="text" id="mobile" /></td>
+        <td><input name="mobile" placeholder="+254700000000" maxlength="13" type="text" id="mobile" /></td>
       </tr>
       <tr>
         <tr>

@@ -1,5 +1,4 @@
-<html>
-<body>
+
 <div id="templatemo_bottom_wrapper">
     <div id="templatemo_bottom">
     	<div class="col one_third">
