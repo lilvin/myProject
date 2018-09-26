@@ -3,7 +3,7 @@
     $email = $_POST['email'];
     $text = $_POST['text'];
     $from = 'From: www.finaldonate.com'; 
-    $to = 'liliankirito@gmail.com';
+    $to = '';
     $subject = 'Email Inquiry';
 
     $body = "From: $author\n E-Mail: $email\n Message:\n $text";
